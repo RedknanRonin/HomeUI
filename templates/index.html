@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .canvas-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        #gridCanvas1, #gridCanvas2 {
+            border: 1px solid black;
+            background: #f0f0f0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to the House Outline App</h1>
+    <a href="/draw" class="btn">Start Drawing</a>
+    <a href="/lights" class="btn">Lights</a>
+    <div class="canvas-container">
+        <canvas id="gridCanvas1" width="400" height="300"></canvas>
+        <canvas id="gridCanvas2" width="400" height="300"></canvas>
+    </div>
+</div>
+<script>
+    window.onload = function() {
+        const canvas1 = document.getElementById('gridCanvas1');
+        const context1 = canvas1.getContext('2d');
+        const canvas2 = document.getElementById('gridCanvas2');
+        const context2 = canvas2.getContext('2d');
+        const gridSize = 20;
+        const drawings = {{ drawings | tojson }};
+
+        function drawGrid(context, canvas) {
+            context.strokeStyle = '#ddd';
+            for (let x = 0; x <= canvas.width; x += gridSize) {
+                context.moveTo(x, 0);
+                context.lineTo(x, canvas.height);
+            }
+            for (let y = 0; y <= canvas.height; y += gridSize) {
+                context.moveTo(0, y);
+                context.lineTo(canvas.width, y);
+            }
+            context.stroke();
+        }
+
+        function drawRectangles(context, rectangles) {
+            rectangles.forEach(rect => {
+                context.fillStyle = 'rgba(0, 0, 0, 0.5)';
+                context.fillRect(rect.startX, rect.startY, rect.width, rect.height);
+            });
+        }
+
+        function draw(context, canvas, rectangles) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            drawGrid(context, canvas);
+            drawRectangles(context, rectangles);
+        }
+
+        if (drawings.length > 0) {
+            draw(context1, canvas1, drawings[0].rectangles);
+        }
+        if (drawings.length > 1) {
+            draw(context2, canvas2, drawings[1].rectangles);
+        }
+    };
+</script>
+</body>
+</html>

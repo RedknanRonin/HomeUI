@@ -1,0 +1,104 @@
+<html>
+
+<style>
+    #gridCanvas {
+        border: 1px solid black;
+        background: #f0f0f0;
+    }
+    .container {
+        text-align: center;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-top: 20px;
+        display: inline-block;
+    }
+    .btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+<body>
+<button onclick="makeApiRequest()">Make API Request</button>
+<div id="apiResponse" style="border: 1px solid #333; padding: 10px; margin-top: 10px; width: 300px; border-radius: 5px;"></div>
+<script>
+    function makeApiRequest() {
+        const url = "https://api.digitransit.fi/routing/v1/routers/finland/index/graphql";
+        const data = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'digitransit-subscription-key': "api-key"
+            },
+            body: JSON.stringify({
+                query: `{
+                      plan(
+                        from: {address}
+                        to: {lat: 61.498726, lon: 23.7738291}
+                        numItineraries: 3
+                      ) {
+                        itineraries {
+                          startTime
+                          legs {
+                            mode
+                            transitLeg
+                            from {
+                              name
+                              lat
+                              lon
+                            }
+                            route {
+                              shortName
+                            }
+                            to {
+                              name
+                              lat
+                              lon
+                            }
+                          }
+                        }
+                      }
+                    }`
+            })
+        };
+
+        fetch(url, data)
+            .then(response => response.json())
+            .then(data => {
+                const itineraries = data.data.plan.itineraries;
+                let resultHtml = '<h2>Busses to city center:</h2>';
+
+                itineraries.forEach(itinerary => {
+                    const startTimeUNIX = new Date(itinerary.startTime);
+                    let startTimeUTC = startTimeUNIX.getUTCHours()+2+":"+startTimeUNIX.getUTCMinutes();
+                    const startLocation = itinerary.legs[1].from;
+                    const bus = itinerary.legs[1].route.shortName;
+
+                    resultHtml += `<strong>Bus:</strong> ${bus}<br/>`;
+                    resultHtml += `<strong>Departure Time:</strong> ${startTimeUTC}<br/>`;
+                    resultHtml += `<strong>From:</strong> ${startLocation.name}<br/>`;
+                    resultHtml += '<hr/><br/>';
+                });
+
+                document.getElementById('apiResponse').innerHTML = resultHtml;
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+</script>
+
+<div class="container">
+    <a href="/" class="btn">Back to Home</a>
+
+
+</div>
+
+</body>
+</html>
