@@ -27,20 +27,41 @@
         .btn:hover {
             background-color: #0056b3;
         }
+        .color-picker {
+            margin-top: 20px;
+        }
+        .color-btn {
+            width: 30px;
+            height: 30px;
+            border: none;
+            margin: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <h1 class="mt-5">Draw House Outline</h1>
     <canvas id="gridCanvas" width="400" height="300"></canvas>
+    <div class="color-picker">
+        <button class="color-btn" style="background-color: #af3838;" data-color="#ff0000"></button>
+        <button class="color-btn" style="background-color: #57cb57;" data-color="#00ff00"></button>
+        <button class="color-btn" style="background-color: #4c4ca8;" data-color="#0000ff"></button>
+        <button class="color-btn" style="background-color: rgba(215,215,46,0.78);" data-color="#ffff00"></button>
+        <button class="color-btn" style="background-color: rgba(255,0,255,0.59);" data-color="#ff00ff"></button>
+        <button class="color-btn" style="background-color: #23bebe;" data-color="#00ffff"></button>
+    </div>
+    <br>
+    <input type="text" id="template Name" placeholder="Template Name">
     <br>
     <button class="btn" id="saveBtn">Save Drawing</button>
+    <br>
+    <select id="loadSelect">
+        <option value="">Select a template to load</option>
+    </select>
     <button class="btn" id="loadBtn">Load Drawing</button>
     <br>
     <a href="/" class="btn">Back to Home</a>
-
-    #create sidebar for this that displays 1 and 2
-
 </div>
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>

@@ -47,13 +47,8 @@
 </head>
 <body>
 <div class="container">
-
-    <div class="canvas-container">
-    <h1>Welcome to the House Outline App</h1>
-    <a href="/draw" class="btn">Start Drawing</a>
-    <br>
-    <a href="/settings" class="btn">Settings</a>
-    </div>
+    <h1>Settings menu</h1>
+    <a href="/" class="btn">Return</a>
     <br>
     <select id="templateSelect1" class="btn">
         <option value="">Select template 1</option>
@@ -75,15 +70,14 @@
 <script>
     window.onload = function() {
         const drawings = {{ drawings | tojson }};
-        const settings = {{ settings | tojson }}
         const canvas1 = document.getElementById('gridCanvas1');
         const context1 = canvas1.getContext('2d');
         const canvas2 = document.getElementById('gridCanvas2');
         const context2 = canvas2.getContext('2d');
         const templateSelect1 = document.getElementById('templateSelect1');
         const templateSelect2 = document.getElementById('templateSelect2');
-        const templateName1 = document.getElementById(settings['template1']);  // name stored in template1
-        const templateName2 = document.getElementById(settings['template2']);
+        const templateName1 = document.getElementById('templateName1');
+        const templateName2 = document.getElementById('templateName2');
 
         function drawGrid(context, width, height, gridSize = 20) {
             context.strokeStyle = '#ddd';

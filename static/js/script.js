@@ -5,7 +5,9 @@ window.onload = function() {
     let isDrawing = false;
     let startX, startY;
     let rectangles = [];
-    let currentDrawingId = null;
+    let currentColor = '#000000';
+    const templateNameInput = document.getElementById('templateName');
+    const loadSelect = document.getElementById('loadSelect');
 
     // Draw the grid
     function drawGrid() {
@@ -24,7 +26,7 @@ window.onload = function() {
     // Draw all rectangles
     function drawRectangles() {
         rectangles.forEach(rect => {
-            context.fillStyle = 'rgba(0, 0, 0, 0.5)';
+            context.fillStyle = rect.color;
             context.fillRect(rect.startX, rect.startY, rect.width, rect.height);
         });
     }
@@ -52,7 +54,7 @@ window.onload = function() {
         const width = endX - startX + gridSize;
         const height = endY - startY + gridSize;
 
-        rectangles.push({ startX, startY, width, height });
+        rectangles.push({ startX, startY, width, height, color: currentColor });
         draw();
     });
 
@@ -68,42 +70,70 @@ window.onload = function() {
         drawRectangles();
 
         // Draw the current rectangle
-        context.fillStyle = 'rgba(0, 0, 0, 0.5)';
+        context.fillStyle = currentColor;
         context.fillRect(startX, startY, currentX - startX + gridSize, currentY - startY + gridSize);
     });
 
     // Save drawing to server
     document.getElementById('saveBtn').addEventListener('click', () => {
+        const templateName = templateNameInput.value.trim();
+        if (templateName === '') {
+            alert('Please enter a template name.');
+            return;
+        }
         fetch('/save', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ rectangles: rectangles })
+            body: JSON.stringify({ name: templateName, rectangles: rectangles })
         })
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    currentDrawingId = data.id;
                     alert('Drawing saved successfully!');
+                    loadTemplates();
                 }
             });
     });
 
     // Load drawing from server
     document.getElementById('loadBtn').addEventListener('click', () => {
-        fetch('/load')
+        const selectedTemplate = loadSelect.value;
+        if (selectedTemplate === '') {
+            alert('Please select a template to load.');
+            return;
+        }
+        fetch(`/load/${selectedTemplate}`)
             .then(response => response.json())
             .then(data => {
-                const drawing = data.find(d => d.id === currentDrawingId);
-                if (drawing) {
-                    rectangles = drawing.rectangles;
-                    draw();
-                } else {
-                    alert('No drawing found!');
-                }
+                rectangles = data.rectangles;
+                draw();
             });
     });
 
+    // Handle color change
+    document.querySelectorAll('.color-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            currentColor = event.target.getAttribute('data-color');
+        });
+    });
+
+    // Load templates into the select element
+    function loadTemplates() {
+        fetch('/templates')
+            .then(response => response.json())
+            .then(data => {
+                loadSelect.innerHTML = '<option value="">Select a template to load</option>';
+                data.templates.forEach(template => {
+                    const option = document.createElement('option');
+                    option.value = template.name;
+                    option.textContent = template.name;
+                    loadSelect.appendChild(option);
+                });
+            });
+    }
+
     draw();
+    loadTemplates();
 };

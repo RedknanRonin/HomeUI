@@ -34,12 +34,12 @@
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'digitransit-subscription-key': "api-key"
+                'digitransit-subscription-key': "f81bddd3a4fa46f98aa16675180de8e7"
             },
             body: JSON.stringify({
                 query: `{
                       plan(
-                        from: {address}
+                        from: {lat: 61.27546, lon: 23.45089}
                         to: {lat: 61.498726, lon: 23.7738291}
                         numItineraries: 3
                       ) {
@@ -99,6 +99,8 @@
 
 
 </div>
+
+<iframe width="360" height="250" style="border-radius: 10px;" src="https://tampere.digitransit.fi/haku?&lang=fi&originLoc=1&address2=Tampereen rautatieasema, Tampere&lon2=23.772794&lat2=61.498612" title="Digitransit UI embedded search" scrolling="no"></iframe>
 
 </body>
 </html>
