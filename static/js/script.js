@@ -75,7 +75,7 @@ window.onload = function() {
     });
 
     // Save drawing to server
-    document.getElementById('saveBtn').addEventListener('click', () => {
+    document.getElementById('saveBtn').addEventListener('click', function()  {
         const templateName = templateNameInput.value.trim();
         if (templateName === '') {
             alert('Please enter a template name.');
@@ -93,6 +93,9 @@ window.onload = function() {
                 if (data.status === 'success') {
                     alert('Drawing saved successfully!');
                     loadTemplates();
+                }
+                else{
+                    alert("Something went wrong.")
                 }
             });
     });

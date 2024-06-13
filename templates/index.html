@@ -47,20 +47,9 @@
 </head>
 <body>
 <div class="container">
-
-    <div class="canvas-container">
     <h1>Welcome to the House Outline App</h1>
     <a href="/draw" class="btn">Start Drawing</a>
-    <br>
     <a href="/settings" class="btn">Settings</a>
-    </div>
-    <br>
-    <select id="templateSelect1" class="btn">
-        <option value="">Select template 1</option>
-    </select>
-    <select id="templateSelect2" class="btn">
-        <option value="">Select template 2</option>
-    </select>
     <div class="canvas-container">
         <div class="template">
             <h2 id="templateName1">Template 1</h2>
@@ -75,15 +64,14 @@
 <script>
     window.onload = function() {
         const drawings = {{ drawings | tojson }};
-        const settings = {{ settings | tojson }}
         const canvas1 = document.getElementById('gridCanvas1');
         const context1 = canvas1.getContext('2d');
         const canvas2 = document.getElementById('gridCanvas2');
         const context2 = canvas2.getContext('2d');
-        const templateSelect1 = document.getElementById('templateSelect1');
-        const templateSelect2 = document.getElementById('templateSelect2');
-        const templateName1 = document.getElementById(settings['template1']);  // name stored in template1
-        const templateName2 = document.getElementById(settings['template2']);
+        const selectedTemplate1 = '{{ selected_templates[0] if selected_templates|length > 0 else "" }}';
+        const selectedTemplate2 = '{{ selected_templates[1] if selected_templates|length > 1 else "" }}';
+        const templateName1 = document.getElementById('templateName1');
+        const templateName2 = document.getElementById('templateName2');
 
         function drawGrid(context, width, height, gridSize = 20) {
             context.strokeStyle = '#ddd';
@@ -111,36 +99,24 @@
             drawRectangles(context, rectangles);
         }
 
-        function loadTemplates(selectElement, templateNameElement, canvas, context) {
-            selectElement.addEventListener('change', (event) => {
-                const selectedTemplateName = event.target.value;
-                const selectedTemplate = drawings.find(drawing => drawing.name === selectedTemplateName);
-                if (selectedTemplate) {
-                    templateNameElement.textContent = selectedTemplateName;
-                    initializeCanvas(canvas, context, selectedTemplate.rectangles);
-                } else {
-                    templateNameElement.textContent = 'No Template Selected';
-                    context.clearRect(0, 0, canvas.width, canvas.height);
-                    drawGrid(context, canvas.width, canvas.height);
-                }
-            });
+        if (selectedTemplate1) {
+            const drawing1 = drawings.find(drawing => drawing.name === selectedTemplate1);
+            if (drawing1) {
+                templateName1.textContent = drawing1.name;
+                initializeCanvas(canvas1, context1, drawing1.rectangles);
+            }
         }
 
-        function populateTemplateSelect(selectElement) {
-            drawings.forEach(drawing => {
-                const option = document.createElement('option');
-                option.value = drawing.name;
-                option.textContent = drawing.name;
-                selectElement.appendChild(option);
-            });
+        if (selectedTemplate2) {
+            const drawing2 = drawings.find(drawing => drawing.name === selectedTemplate2);
+            if (drawing2) {
+                templateName2.textContent = drawing2.name;
+                initializeCanvas(canvas2, context2, drawing2.rectangles);
+            }
         }
 
         drawGrid(context1, canvas1.width, canvas1.height);
         drawGrid(context2, canvas2.width, canvas2.height);
-        populateTemplateSelect(templateSelect1);
-        populateTemplateSelect(templateSelect2);
-        loadTemplates(templateSelect1, templateName1, canvas1, context1);
-        loadTemplates(templateSelect2, templateName2, canvas2, context2);
     };
 </script>
 </body>

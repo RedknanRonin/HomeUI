@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Home</title>
+    <title>Settings</title>
     <style>
         body {
             display: flex;
@@ -30,112 +30,60 @@
         .btn:hover {
             background-color: #0056b3;
         }
-        .canvas-container {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-        }
-        .template {
-            text-align: center;
-        }
-        #gridCanvas1, #gridCanvas2 {
-            border: 1px solid black;
-            background: #f0f0f0;
-            margin-top: 20px;
+        select {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>Settings menu</h1>
-    <a href="/" class="btn">Return</a>
+    <h1>Settings</h1>
+    <form id="settingsForm">
+        <label for="templateSelect1">Select template 1:</label>
+        <select id="templateSelect1" name="template1">
+            <option value="">None</option>
+            {% for drawing in drawings %}
+                <option value="{{ drawing.name }}">{{ drawing.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="templateSelect2">Select template 2:</label>
+        <select id="templateSelect2" name="template2">
+            <option value="">None</option>
+            {% for drawing in drawings %}
+                <option value="{{ drawing.name }}">{{ drawing.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <button type="submit" class="btn">Save Settings</button>
+    </form>
     <br>
-    <select id="templateSelect1" class="btn">
-        <option value="">Select template 1</option>
-    </select>
-    <select id="templateSelect2" class="btn">
-        <option value="">Select template 2</option>
-    </select>
-    <div class="canvas-container">
-        <div class="template">
-            <h2 id="templateName1">Template 1</h2>
-            <canvas id="gridCanvas1" width="400" height="300"></canvas>
-        </div>
-        <div class="template">
-            <h2 id="templateName2">Template 2</h2>
-            <canvas id="gridCanvas2" width="400" height="300"></canvas>
-        </div>
-    </div>
+    <a href="/" class="btn">Back to Home</a>
 </div>
 <script>
-    window.onload = function() {
-        const drawings = {{ drawings | tojson }};
-        const canvas1 = document.getElementById('gridCanvas1');
-        const context1 = canvas1.getContext('2d');
-        const canvas2 = document.getElementById('gridCanvas2');
-        const context2 = canvas2.getContext('2d');
-        const templateSelect1 = document.getElementById('templateSelect1');
-        const templateSelect2 = document.getElementById('templateSelect2');
-        const templateName1 = document.getElementById('templateName1');
-        const templateName2 = document.getElementById('templateName2');
-
-        function drawGrid(context, width, height, gridSize = 20) {
-            context.strokeStyle = '#ddd';
-            for (let x = 0; x <= width; x += gridSize) {
-                context.moveTo(x, 0);
-                context.lineTo(x, height);
-            }
-            for (let y = 0; y <= height; y += gridSize) {
-                context.moveTo(0, y);
-                context.lineTo(width, y);
-            }
-            context.stroke();
-        }
-
-        function drawRectangles(context, rectangles) {
-            rectangles.forEach(rect => {
-                context.fillStyle = rect.color;
-                context.fillRect(rect.startX, rect.startY, rect.width, rect.height);
-            });
-        }
-
-        function initializeCanvas(canvas, context, rectangles) {
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            drawGrid(context, canvas.width, canvas.height);
-            drawRectangles(context, rectangles);
-        }
-
-        function loadTemplates(selectElement, templateNameElement, canvas, context) {
-            selectElement.addEventListener('change', (event) => {
-                const selectedTemplateName = event.target.value;
-                const selectedTemplate = drawings.find(drawing => drawing.name === selectedTemplateName);
-                if (selectedTemplate) {
-                    templateNameElement.textContent = selectedTemplateName;
-                    initializeCanvas(canvas, context, selectedTemplate.rectangles);
+    document.getElementById('settingsForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const template1 = document.getElementById('templateSelect1').value;
+        const template2 = document.getElementById('templateSelect2').value;
+        fetch('/save_settings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ template1: template1, template2: template2 })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Settings saved successfully!');
+                    window.location.href = '/';
                 } else {
-                    templateNameElement.textContent = 'No Template Selected';
-                    context.clearRect(0, 0, canvas.width, canvas.height);
-                    drawGrid(context, canvas.width, canvas.height);
+                    alert('Failed to save settings.');
                 }
             });
-        }
-
-        function populateTemplateSelect(selectElement) {
-            drawings.forEach(drawing => {
-                const option = document.createElement('option');
-                option.value = drawing.name;
-                option.textContent = drawing.name;
-                selectElement.appendChild(option);
-            });
-        }
-
-        drawGrid(context1, canvas1.width, canvas1.height);
-        drawGrid(context2, canvas2.width, canvas2.height);
-        populateTemplateSelect(templateSelect1);
-        populateTemplateSelect(templateSelect2);
-        loadTemplates(templateSelect1, templateName1, canvas1, context1);
-        loadTemplates(templateSelect2, templateName2, canvas2, context2);
-    };
+    });
 </script>
 </body>
 </html>
