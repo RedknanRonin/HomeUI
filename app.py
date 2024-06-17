@@ -52,8 +52,9 @@ def save():
     data = request.json
     name = data.get('name')
     rectangles = data.get('rectangles', [])
+    image=data.get('imageSource')
     drawings = load_drawings()
-    drawings.append({'name': name, 'rectangles': rectangles})
+    drawings.append({'name': name, 'rectangles': rectangles, 'imageSource': image})
     save_drawings(drawings)
     return jsonify(status='success')
 

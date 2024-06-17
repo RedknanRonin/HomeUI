@@ -6,6 +6,8 @@ window.onload = function() {
     let startX, startY;
     let rectangles = [];
     let currentColor = '#000000';
+    let image = new Image();
+    let imgSrc = '';
     const templateNameInput = document.getElementById('templateName');
     const loadSelect = document.getElementById('loadSelect');
 
@@ -90,7 +92,7 @@ window.onload = function() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name: templateName, rectangles: rectangles })
+            body: JSON.stringify({ name: templateName, rectangles: rectangles, imageSource: imgSrc})
         })
             .then(response => response.json())
             .then(data => {
@@ -115,6 +117,12 @@ window.onload = function() {
             .then(response => response.json())
             .then(data => {
                 rectangles = data.rectangles;
+                imgSrc=data.imageSource
+                if (imgSrc) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            image.src = e.target.result;  };
+                        reader.readAsDataURL(file);}
                 draw();
             });
     });
@@ -141,7 +149,7 @@ window.onload = function() {
             });
     }
 
-    let image = new Image();
+
     imageInput.addEventListener('change', function(event) {
         const file = event.target.files[0];
         if (file) {
@@ -151,6 +159,7 @@ window.onload = function() {
                     drawRectangles();
                 };
                 image.src = e.target.result;
+                imgSrc= file.name;
             };
             reader.readAsDataURL(file);
         }
