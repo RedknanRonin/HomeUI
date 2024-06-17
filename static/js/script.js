@@ -25,6 +25,10 @@ window.onload = function() {
 
     // Draw all rectangles
     function drawRectangles() {
+        context.clearRect(0,0,canvas.width,canvas.height)
+        if (image.src) {
+            context.drawImage(image, 0, 0, canvas.width, canvas.height); }
+        drawGrid(context, canvas.width, canvas.height)
         rectangles.forEach(rect => {
             context.fillStyle = rect.color;
             context.fillRect(rect.startX, rect.startY, rect.width, rect.height);
@@ -136,6 +140,21 @@ window.onload = function() {
                 });
             });
     }
+
+    let image = new Image();
+    imageInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                image.onload = function() {
+                    drawRectangles();
+                };
+                image.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
 
     draw();
     loadTemplates();
