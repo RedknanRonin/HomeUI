@@ -46,6 +46,7 @@
     </style>
 </head>
 <body>
+
 <div class="container">
     <h1>Welcome to the House Outline App</h1>
     <a href="/draw" class="btn">Start Drawing</a>
@@ -61,6 +62,14 @@
         </div>
     </div>
     <iframe width="360" height="250" style="border-radius: 10px;" src="https://tampere.digitransit.fi/haku?&lang=fi&address1=Metsolankuja 3, Tampere&lon1=23.752575&lat1=61.465169&address2=Tampereen rautatieasema, Tampere&lon2=23.772794&lat2=61.498612" title="Digitransit UI embedded search" scrolling="no"></iframe>
+</div>
+<div id="colors">
+    <div id="red" class="color"></div>
+    <div id="green" class="color"></div>
+    <div id="blue" class="color"></div>
+    <div id="yellow" class="color"></div>
+    <div id="orange" class="color"></div>
+    <div id="purple" class="color"></div>
 </div>
 <script>
     window.onload = function() {
@@ -87,6 +96,49 @@
             context.stroke();
         }
 
+        function addRectangleClickListener(canvas, rectangles) {
+            canvas.addEventListener('click', function(event) {
+                const x = event.offsetX;
+                const y = event.offsetY;
+                rectangles.forEach(rect => {
+                    if (x >= rect.startX && x <= rect.startX + rect.width && y >= rect.startY && y <= rect.startY + rect.height) {
+                        fetch('/api_request/' + rect.color, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ color: rect.color })
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.status === 'success') {
+                                    alert('API request sent successfully!');
+                                } else {
+                                    alert('Failed to send API request.');
+                                }
+                            });
+                    }
+                });
+            });
+        }
+
+        if (selectedTemplate1) {
+            const drawing1 = drawings.find(drawing => drawing.name === selectedTemplate1);
+            if (drawing1) {
+                templateName1.textContent = drawing1.name;
+                initializeCanvas(canvas1, context1, drawing1.rectangles);
+                addRectangleClickListener(canvas1, drawing1.rectangles);  // Add this line
+            }
+        }
+
+        if (selectedTemplate2) {
+            const drawing2 = drawings.find(drawing => drawing.name === selectedTemplate2);
+            if (drawing2) {
+                templateName2.textContent = drawing2.name;
+                initializeCanvas(canvas2, context2, drawing2.rectangles);
+                addRectangleClickListener(canvas2, drawing2.rectangles);  // Add this line
+            }
+        }
         function drawRectangles(context, rectangles) {
             rectangles.forEach(rect => {
                 context.fillStyle = rect.color;
@@ -115,6 +167,7 @@
                 initializeCanvas(canvas2, context2, drawing2.rectangles);
             }
         }
+
 
         drawGrid(context1, canvas1.width, canvas1.height);
         drawGrid(context2, canvas2.width, canvas2.height);

@@ -22,10 +22,8 @@ def load_settings():
     if os.path.exists(SETTINGS_FILE):
         with open(SETTINGS_FILE, 'r') as file:
             settings = json.load(file)
-            if isinstance(settings, dict):
-                return settings
-            return {'selected_templates': settings}
-    return {'selected_templates': ["", ""]}
+            return settings
+    return {'selected_templates': ["", ""], 'apiUrls': {}}
 
 def save_settings(settings):
     with open(SETTINGS_FILE, 'w') as file:
@@ -45,7 +43,11 @@ def draw():
 @app.route('/settings')
 def settings():
     drawings = load_drawings()
-    return render_template('settings.html', drawings=drawings)
+    settings = load_settings()  # Load the settings
+    selected_templates = settings.get('selected_templates', ["", ""])  # Get the selected templates
+    return render_template('settings.html', drawings=drawings, settings=settings, selected_templates=selected_templates)  # Pass the selected templates to the template
+
+
 
 @app.route('/save', methods=['POST'])
 def save():
@@ -62,7 +64,7 @@ def save():
 def save_settings_route():
     data = request.json
     selected_templates = [data.get('template1', ""), data.get('template2', "")]
-    settings = {'selected_templates': selected_templates}
+    settings = {'selected_templates': selected_templates, 'apiUrls': data.get('apiUrls', {}) }
     save_settings(settings)
     return jsonify(status='success')
 
@@ -80,12 +82,23 @@ def templates():
     template_names = [{'name': d['name']} for d in drawings]
     return jsonify(templates=template_names)
 
-@app.route('/square-clicked', methods=['POST'])
-def square_clicked():
+
+@app.route('/api_request/<color>', methods=['POST'])
+def api_request(color):
+    print(color)
+    settings = load_settings()
+    api_urls = settings.get('apiUrls', {})
+    api_url = api_urls.get(color)
+    if not api_url:
+        return jsonify(status='error', message='API URL not found for color'), 404
+
     data = request.json
-    # Process the data as needed
-    print(f"Canvas: {data['canvas']}, Rectangle: {data['rectangle']}")
-    return jsonify(status='success')
+    response = request.post(api_url, json=data)
+    if response.status_code == 200:
+        return jsonify(status='success')
+    else:
+        return jsonify(status='error', message='Failed to send API request'), response.status_code
+
 
 if __name__ == '__main__':
     app.run(debug=True)

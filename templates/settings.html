@@ -42,37 +42,79 @@
     <h1>Settings</h1>
     <form id="settingsForm">
         <label for="templateSelect1">Select template 1:</label>
-        <select id="templateSelect1" name="template1">
-            <option value="">None</option>
-            {% for drawing in drawings %}
-                <option value="{{ drawing.name }}">{{ drawing.name }}</option>
+        <select id="selectedTemplate1">
+            {% for template in drawings %}
+                <option value="{{ template.name }}" {% if template.name == selected_templates[0] %}selected{% endif %}>{{ template.name }}</option>
             {% endfor %}
         </select>
         <br>
         <label for="templateSelect2">Select template 2:</label>
-        <select id="templateSelect2" name="template2">
-            <option value="">None</option>
-            {% for drawing in drawings %}
-                <option value="{{ drawing.name }}">{{ drawing.name }}</option>
+
+        <select id="selectedTemplate2">
+            {% for template in drawings %}
+                <option value="{{ template.name }}" {% if template.name == selected_templates[1] %}selected{% endif %}>{{ template.name }}</option>
             {% endfor %}
         </select>
+
+        <br>
+        <div>
+            <h2>API Requests for Colors</h2>
+            <div>
+                <label for="redApi">Red:</label>
+                <input type="text" id="redApi" placeholder="Enter API URL for red" value="{{ settings.apiUrls.red }}">
+            </div>
+            <div>
+                <label for="greenApi">Green:</label>
+                <input type="text" id="greenApi" placeholder="Enter API URL for green" value="{{ settings.apiUrls.green }}">
+            </div>
+            <div>
+                <label for="blueApi">Blue:</label>
+                <input type="text" id="blueApi" placeholder="Enter API URL for blue" value="{{ settings.apiUrls.blue }}">
+            </div>
+            <div>
+                <label for="yellowApi">Yellow:</label>
+                <input type="text" id="yellowApi" placeholder="Enter API URL for yellow" value="{{ settings.apiUrls.yellow }}">
+            </div>
+            <div>
+                <label for="orangeApi">Orange:</label>
+                <input type="text" id="orangeApi" placeholder="Enter API URL for orange" value="{{ settings.apiUrls.orange }}">
+            </div>
+            <div>
+                <label for="purpleApi">Purple:</label>
+                <input type="text" id="purpleApi" placeholder="Enter API URL for purple" value="{{ settings.apiUrls.purple }}">
+            </div>
+        </div>
+
         <br>
         <button type="submit" class="btn">Save Settings</button>
     </form>
     <br>
     <a href="/" class="btn">Back to Home</a>
+
+
+
 </div>
 <script>
+
     document.getElementById('settingsForm').addEventListener('submit', function(event) {
         event.preventDefault();
-        const template1 = document.getElementById('templateSelect1').value;
-        const template2 = document.getElementById('templateSelect2').value;
+        let settings = { selected_templates: ["", ""], apiUrls: {} };
+        settings.template1 = document.getElementById('selectedTemplate1').value;
+        settings.template2 = document.getElementById('selectedTemplate2').value;
+        settings.apiUrls = {
+            red: document.getElementById('redApi').value,
+            green: document.getElementById('greenApi').value,
+            blue: document.getElementById('blueApi').value,
+            yellow: document.getElementById('yellowApi').value,
+            orange: document.getElementById('orangeApi').value,
+            purple: document.getElementById('purpleApi').value
+        };
         fetch('/save_settings', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ template1: template1, template2: template2 })
+            body: JSON.stringify(settings)
         })
             .then(response => response.json())
             .then(data => {

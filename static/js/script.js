@@ -117,16 +117,32 @@ window.onload = function() {
             .then(response => response.json())
             .then(data => {
                 rectangles = data.rectangles;
-                imgSrc=data.imageSource
+                imgSrc = data.imageSource;
+                image.src = data.imageSource;
+
                 if (imgSrc) {
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            image.src = e.target.result;  };
-                        reader.readAsDataURL(file);}
-                draw();
+                    const fileInput = document.getElementById('imageInput');
+
+
+                    fileInput.addEventListener('change', function(event) {
+                        const file = event.target.files[0];
+                        if (file) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                image.onload = function() {
+                                    drawRectangles();
+                                };
+                                image.src = e.target.result;
+                                imgSrc = file.name;
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    });
+                } else {
+                    drawRectangles();
+                }
             });
     });
-
     // Handle color change
     document.querySelectorAll('.color-btn').forEach(button => {
         button.addEventListener('click', (event) => {
@@ -164,6 +180,8 @@ window.onload = function() {
             reader.readAsDataURL(file);
         }
     });
+
+
 
     draw();
     loadTemplates();
