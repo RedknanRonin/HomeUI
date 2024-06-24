@@ -46,20 +46,16 @@
 <div class="container">
     <h1 class="mt-5">Draw House Outline</h1>
     <canvas id="gridCanvas" width="400" height="300"></canvas>
-    <div class="color-picker">
-        <button class="color-btn" style="background-color: rgba(210,46,46,0.6);" data-color="red"></button>
-        <button class="color-btn" style="background-color: rgba(87,203,87,0.67);" data-color="rgba(87,203,87,0.67)"></button>
-        <button class="color-btn" style="background-color: rgba(76,76,168,0.67);" data-color="rgba(76,76,168,0.67)"></button>
-        <button class="color-btn" style="background-color: rgba(215,215,46,0.65);" data-color="rgba(215,215,46,0.65)"></button>
-        <button class="color-btn" style="background-color: rgba(255,0,255,0.59);" data-color="rgba(255,0,255,0.59)"></button>
-        <button class="color-btn" style="background-color: rgba(35,190,190,0.64);" data-color="rgba(35,190,190,0.64)"></button>
-    </div>
+    <br>
+    {% for color in colors %}
+        <button class="color-btn" style="background-color: {{ color  }};" data-color="{{ color }}"></button>
+    {% endfor %}
 
     <br>
     <input type="file" id="imageInput" accept="image/*">
     <br>
     <input type="text" id="templateName" placeholder="Template Name">
-    <br>
+
     <button class="btn" id="saveBtn">Save Drawing</button>
     <br>
     <select id="loadSelect">

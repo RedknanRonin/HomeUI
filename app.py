@@ -12,6 +12,16 @@ def load_drawings():
             return json.load(file)
     return []
 
+def hex_to_rgba(hex, alpha=0.6):
+    hex = hex.lstrip('#')
+    hlen = len(hex)
+    return 'rgba({}, {}, {}, {})'.format(
+        int(hex[0:2], 16),
+        int(hex[2:4], 16),
+        int(hex[4:6], 16),
+        alpha
+    )
+
 def save_drawings(drawings):
     if os.path.exists(DRAWINGS_FILE):
         with open(DRAWINGS_FILE, 'w') as file:
@@ -38,14 +48,18 @@ def home():
 
 @app.route('/draw')
 def draw():
-    return render_template('draw.html')
+    settings = load_settings()
+    color=settings.get('colors', {})
+    rgba_colors = {color: hex_to_rgba(hex, 0.5) for color, hex in color.items()}
+    print(rgba_colors)
+    return render_template('draw.html',colors=rgba_colors.values())
 
 @app.route('/settings')
 def settings():
     drawings = load_drawings()
     settings = load_settings()  # Load the settings
     selected_templates = settings.get('selected_templates', ["", ""])  # Get the selected templates
-    return render_template('settings.html', drawings=drawings, settings=settings, selected_templates=selected_templates)  # Pass the selected templates to the template
+    return render_template('settings.html', drawings=drawings, settings=settings, selected_templates=selected_templates)
 
 
 
@@ -64,7 +78,7 @@ def save():
 def save_settings_route():
     data = request.json
     selected_templates = [data.get('template1', ""), data.get('template2', "")]
-    settings = {'selected_templates': selected_templates, 'apiUrls': data.get('apiUrls', {}) }
+    settings = {'selected_templates': selected_templates, 'apiUrls': data.get('apiUrls', {}),'colors' :data.get('colors', {}) }
     save_settings(settings)
     return jsonify(status='success')
 
