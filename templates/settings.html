@@ -85,17 +85,34 @@
                 <input type="text" id="purpleApi" placeholder="Enter API URL for purple" value="{{ settings.apiUrls.purple }}">
             </div>
         </div>
-
+        <button type="submit" id="clearButton" class="btn">Empty templates</button>
         <br>
         <button type="submit" class="btn">Save Settings</button>
     </form>
     <br>
+    <a href="/draw" class="btn">Go to Drawing Page</a>
     <a href="/" class="btn">Back to Home</a>
 
 
 
 </div>
 <script>
+
+    document.getElementById('clearButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        fetch('/clear_drawings', {
+            method: 'POST'
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Templates cleared successfully!');
+                    window.location.href = '/';
+                } else {
+                    alert('Failed to clear templates.');
+                }
+            });
+    })
 
     document.getElementById('settingsForm').addEventListener('submit', function(event) {
         event.preventDefault();
