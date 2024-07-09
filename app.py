@@ -14,13 +14,19 @@ def load_drawings():
 
 def hex_to_rgba(hex, alpha=0.6):
     hex = hex.lstrip('#')
-    hlen = len(hex)
     return 'rgba({}, {}, {}, {})'.format(
         int(hex[0:2], 16),
         int(hex[2:4], 16),
         int(hex[4:6], 16),
         alpha
     )
+
+def rgba_to_hex(rgba):
+    rgba = rgba.strip('rgba()').split(',')
+    r = int(rgba[0])
+    g = int(rgba[1])
+    b = int(rgba[2])
+    return '#{:02x}{:02x}{:02x}'.format(r, g, b)
 
 def save_drawings(drawings):
     if os.path.exists(DRAWINGS_FILE):
@@ -33,7 +39,7 @@ def load_settings():
         with open(SETTINGS_FILE, 'r') as file:
             settings = json.load(file)
             return settings
-    return {'selected_templates': ["", ""], 'apiUrls': {}}
+    return {'selected_templates': ["", ""], 'apiUrls': {}, 'colors': {}}
 
 def save_settings(settings):
     with open(SETTINGS_FILE, 'w') as file:
@@ -51,7 +57,6 @@ def draw():
     settings = load_settings()
     color=settings.get('colors', {})
     rgba_colors = {color: hex_to_rgba(hex, 0.5) for color, hex in color.items()}
-    print(rgba_colors)
     return render_template('draw.html',colors=rgba_colors.values())
 
 @app.route('/settings')
@@ -77,8 +82,15 @@ def save():
 @app.route('/save_settings', methods=['POST'])
 def save_settings_route():
     data = request.json
+    prev=load_settings()
     selected_templates = [data.get('template1', ""), data.get('template2', "")]
     settings = {'selected_templates': selected_templates, 'apiUrls': data.get('apiUrls', {}),'colors' :data.get('colors', {}) }
+
+    #for pColorMap in prev['colors']:
+     #   for pColor in (prev['colors'][pColorMap]):
+      #      if pColor not in data['colors'][pColorMap]:
+       #         data['colors'][pColorMap].append(pColor)
+
     save_settings(settings)
     return jsonify(status='success')
 
@@ -96,13 +108,18 @@ def templates():
     template_names = [{'name': d['name']} for d in drawings]
     return jsonify(templates=template_names)
 
+@app.route('/clear_drawings', methods=['POST'])
+def clear_drawings():
+    save_drawings([{'name': "None", 'rectangles': [], 'imageSource': ""}])
+
 
 @app.route('/api_request/<color>', methods=['POST'])
 def api_request(color):
-    print(color)
     settings = load_settings()
+    rgba=(settings.get('colors'))
+    color_as_hex=(dict((v,k) for k,v in rgba.items())[rgba_to_hex(color)])
     api_urls = settings.get('apiUrls', {})
-    api_url = api_urls.get(color)
+    api_url = api_urls.get(color_as_hex)
     if not api_url:
         return jsonify(status='error', message='API URL not found for color'), 404
 

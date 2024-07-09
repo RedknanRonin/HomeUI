@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Home</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             display: flex;
@@ -49,7 +50,6 @@
 
 <div class="container">
     <h1>Welcome to the House Outline App</h1>
-    <a href="/draw" class="btn">Start Drawing</a>
     <a href="/settings" class="btn">Settings</a>
     <div class="canvas-container">
         <div class="template">
@@ -60,8 +60,14 @@
             <h2 id="templateName2">Template 2</h2>
             <canvas id="gridCanvas2" width="400" height="300"></canvas>
         </div>
+
     </div>
+    <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+        <canvas id="hourlyPriceChart"></canvas>
+    </div>
+
     <iframe width="360" height="250" style="border-radius: 10px;" src="https://tampere.digitransit.fi/haku?&lang=fi&address1=Metsolankuja 3, Tampere&lon1=23.752575&lat1=61.465169&address2=Tampereen rautatieasema, Tampere&lon2=23.772794&lat2=61.498612" title="Digitransit UI embedded search" scrolling="no"></iframe>
+    </div>
 </div>
 <div id="colors">
     <div id="red" class="color"></div>
@@ -72,7 +78,86 @@
     <div id="purple" class="color"></div>
 </div>
 <script>
+
+    async function getPriceForHourToday(hour){
+        const PRICE_ENDPOINT = 'https://api.porssisahko.net/v1/price.json';
+        const dateAndTimeNow = new Date();
+        const year = dateAndTimeNow.getFullYear();
+        const month = dateAndTimeNow.getMonth() + 1;
+        const day = dateAndTimeNow.getDate();
+
+        const twoDigits = (number) => (number < 10 ? `0${number}` : `${number}`);
+
+        const params = `date=${year}-${twoDigits(month)}-${twoDigits(day)}&hour=${twoDigits(hour)}`;
+        const response = await fetch(`${PRICE_ENDPOINT}?${params}`);
+        const { price } = await response.json();
+        console.log(`The price is now ${price}`);
+        return price;}
+    //requires anti cors measures on localhost
+
+    elecPrice=async function (){
+        const prices = [];
+        const hours = [];
+        for (let i = 0; i < 24; i++) {
+            hours.push(`${i}:00`);
+            // Assuming getPriceForHourToday returns a promise that resolves with the price
+            const price = await getPriceForHourToday(i);
+            prices.push(price);
+        }
+
+        const ctx = document.getElementById('hourlyPriceChart').getContext('2d');
+        const hourlyPriceChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: hours,
+                datasets: [{
+                    label: 'Sähkön hinta snt/kWh',
+                    data: prices,
+                    fill: true,
+                    borderColor: 'rgb(175, 192, 192)',
+                    backgroundColor: 'rgb(40,173,173)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });}
+
     window.onload = function() {
+        elecPrice(); // Called  immediately on load
+
+        function calculateDelayUntilSetTime(hour) {
+            const now = new Date();
+            const next = new Date(now);
+            next.setHours(hour, 0, 0, 0); // Set the next time to the desired hour
+
+            // If the next time is already past, set it for the next day
+            if (next <= now) {
+                next.setDate(next.getDate() + 1);
+            }
+
+            return next - now; // Return the delay in milliseconds
+        }
+
+        function queryPriceAtSetTime(hour) {
+            const delay = calculateDelayUntilSetTime(hour);
+
+            setTimeout(function() {
+                elecPrice(); // Call your query function
+
+                // Then set it to repeat every 24 hours
+                setInterval(elecPrice, 86400000); // 24 hours in milliseconds
+            }, delay);
+        }
+
+        queryPriceAtSetTime(14);
+
+
         const drawings = {{ drawings | tojson }};
         const canvas1 = document.getElementById('gridCanvas1');
         const context1 = canvas1.getContext('2d');
@@ -102,7 +187,7 @@
                 const y = event.offsetY;
                 rectangles.forEach(rect => {
                     if (x >= rect.startX && x <= rect.startX + rect.width && y >= rect.startY && y <= rect.startY + rect.height) {
-                        fetch('/api_request/' + rect.color, {
+                        fetch('/api_request/' +rect.color, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
