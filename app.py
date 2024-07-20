@@ -5,10 +5,17 @@ import os
 app = Flask(__name__)
 DRAWINGS_FILE = 'data/drawings.json'
 SETTINGS_FILE = 'data/settings.json'
+CONFIG_FILE = 'data/config.json'
 
 def load_drawings():
     if os.path.exists(DRAWINGS_FILE):
         with open(DRAWINGS_FILE, 'r') as file:
+            return json.load(file)
+    return []
+
+def load_config():
+    if os.path.exists(CONFIG_FILE):
+        with open(CONFIG_FILE, 'r') as file:
             return json.load(file)
     return []
 
@@ -49,8 +56,9 @@ def save_settings(settings):
 def home():
     drawings = load_drawings()
     settings = load_settings()
+    config=load_config()
     selected_templates = settings.get('selected_templates', ["", ""])
-    return render_template('index.html', drawings=drawings, selected_templates=selected_templates)
+    return render_template('index.html', drawings=drawings, selected_templates=selected_templates, config=config)
 
 @app.route('/draw')
 def draw():

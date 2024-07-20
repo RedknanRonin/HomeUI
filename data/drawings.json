@@ -1,1 +1,1 @@
-[{"name": "None", "rectangles": [], "imageSource": ""}]
+[{"name": "None", "rectangles": [], "imageSource": ""}, {"name": "aaa", "rectangles": [{"startX": 40, "startY": 80, "width": 120, "height": 100, "color": "rgba(183, 42, 42, 0.5)"}, {"startX": 140, "startY": 180, "width": 100, "height": -140, "color": "rgba(100, 122, 144, 0.5)"}, {"startX": 260, "startY": 140, "width": 140, "height": 160, "color": "rgba(13, 13, 13, 0.5)"}], "imageSource": ""}]

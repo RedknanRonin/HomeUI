@@ -1,3 +1,4 @@
+
 window.onload = function() {
     const canvas = document.getElementById('gridCanvas');
     const context = canvas.getContext('2d');
