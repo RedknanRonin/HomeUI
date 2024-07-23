@@ -43,13 +43,27 @@
             border: 1px solid black;
             background: #f0f0f0;
             margin-top: 20px;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+        .chart-container {
+            flex: 1;
+            height: 40vh;
+            max-width: 49%;
+            margin-right: 1%; /* Adds a buffer to the right */
+        }
+        .bus-container {
+            flex: 1;
+            height: 40vh;
+            max-width: 49%;
+            overflow-y: auto;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Welcome to the House Outline App</h1>
     <div class="canvas-container">
         <div class="template">
             <h2 id="templateName1">Template 1</h2>
@@ -61,13 +75,15 @@
         </div>
 
     </div>
-    <div class="chart-container" style="position: relative; height:40vh; width:80vw">
-        <canvas id="hourlyPriceChart"></canvas>
+    <div class="data-container" style="display: flex; justify-content: space-around; width: 100%;">
+        <div class="chart-container" style="flex: 1; height:40vh; max-width: 49%;">
+            <canvas id="hourlyPriceChart"></canvas>
+        </div>
+        <div class="bus-container" style="flex: 1; height:40vh; max-width: 49%; overflow-y: auto;">
+            <h1> Next buses towards city center</h1>
+            <!-- Dynamic bus data will be inserted here -->
+        </div>
 
-    </div>
-    <div class="bus-container">
-     <h1> Next busses towards city center</h1>
-    </div>
 
 
 
@@ -135,33 +151,73 @@
         });}
 
     window.onload = function() {
-        elecPrice(); // Called  immediately on load
+        async function fetchAndDisplayElectricityPrices() {
+            const URL = 'https://api.porssisahko.net/v1/latest-prices.json';
 
-        function calculateDelayUntilSetTime(hour) {
-            const now = new Date();
-            const next = new Date(now);
-            next.setHours(hour, 0, 0, 0); // Set the next time to the desired hour
+            try {
+                const response = await fetch(URL);
+                const jsonData = await response.json();
+                const pricesData = jsonData.prices;
 
-            // If the next time is already past, set it for the next day
-            if (next <= now) {
-                next.setDate(next.getDate() + 1);
+                // Get the current date and time
+                const now = new Date();
+
+                // Filter the pricesData array to include only future prices
+                const futurePricesData = pricesData.filter(data => new Date(data.startDate) > now);
+
+                // Sort the future prices data based on startDate
+                futurePricesData.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+
+                // Extract prices and hours for labels
+                const prices = futurePricesData.map(data => data.price);
+                const hours = futurePricesData.map(data => new Date(data.startDate).getHours() + ':00');
+
+                // Update the chart
+                updateElectricityPriceChart(hours, prices);
+            } catch (error) {
+                console.error('Failed to fetch electricity prices:', error);
             }
-
-            return next - now; // Return the delay in milliseconds
         }
 
-        function queryPriceAtSetTime(hour) {
-            const delay = calculateDelayUntilSetTime(hour);
+        function updateElectricityPriceChart(labels, data) {
+            const ctx = document.getElementById('hourlyPriceChart').getContext('2d');
+            const backgroundColors = labels.map(label => {  
+                return  'rgba(75,192,192,0.6)';
+            });
 
-            setTimeout(function() {
-                elecPrice(); // Call your query function
-
-                // Then set it to repeat every 24 hours
-                setInterval(elecPrice, 86400000); // 24 hours in milliseconds
-            }, delay);
+            const chartExists = Chart.getChart('hourlyPriceChart'); // Check if the chart instance exists
+            if (chartExists) {
+                chartExists.data.labels = labels;
+                chartExists.data.datasets[0].data = data;
+                chartExists.data.datasets[0].backgroundColor = backgroundColors; // Update background colors
+                chartExists.update();
+            } else {
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Electricity Price (cents/kWh)',
+                            data: data,
+                            fill: false,
+                            borderColor: 'rgb(75, 192, 192)',
+                            backgroundColor: backgroundColors,
+                            tension: 0.1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
         }
 
-        queryPriceAtSetTime(14);
+        // Call the function to fetch the data and display the chart
+        fetchAndDisplayElectricityPrices();
 
 
         const drawings = {{ drawings | tojson }};
@@ -261,13 +317,13 @@
 
         function updateBusContainer(itineraries) {
             const container = document.querySelector('.bus-container');
-            container.innerHTML = '<h1>Next buses towards city center</h1>'; // Reset container content
+            container.innerHTML = '<h2>Next buses towards city center</h2>'; // Reset container content
 
             itineraries.forEach((itinerary, index) => {
                 const itineraryElem = document.createElement('div');
                 itineraryElem.classList.add('itinerary');
 
-                let itineraryHtml = `<h2>Itinerary ${index + 1}</h2><ul>`;
+                let itineraryHtml = ``;
                 itinerary.legs.forEach(leg => {
                     if (leg.trip!=null) {
                     const startTime =  new Date(itinerary.startTime).toLocaleTimeString().split(".");
@@ -277,7 +333,8 @@
                     <strong>${leg.trip.routeShortName}</strong>
                     <br> From home: <strong>${startTime[0]}:${startTime[1]}</strong>
                     <br> Bus leaves at ${busLeavesTime[0]}:${busLeavesTime[1]} from ${leg.from.name}
-                </li>`;
+                </li>
+                <br>`;
                 };
                  });
                 itineraryHtml += '</ul>';
