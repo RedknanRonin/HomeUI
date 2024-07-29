@@ -59,9 +59,45 @@
             max-width: 49%;
             overflow-y: auto;
         }
+        .clock-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 25%; /* Adjust based on the size of other containers */
+            height: 40vh; /* Adjust to match the height of other containers */
+            margin: 0 auto; /* Center the container */
+            background-color: #f0f0f0; /* Optional: match the page background or set a different color */
+            border: 1px solid #ddd; /* Optional: add a border to match other containers */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: add shadow for depth */
+            margin-bottom: 20px; /* Space from the next element */
+            margin-top:10%;
+        }
+
+        .clock {
+            font-size: 100px; /* Adjust the clock font size as needed */
+            font-family: "Bauhaus 93";
+        }
+
+        .rectangle-7 {
+            position: relative;
+            width: 30%;
+            height: 10px; /* Adjust height as needed */
+            background-color: #e0e0e0; /* Background color of the progress bar container */
+        }
+
+        .progress-bar {
+            position: absolute;
+            height: 100%;
+            width: 0; /* Initial width */
+            background-color: #76c7c0; /* Color of the progress bar */
+        }
     </style>
 </head>
 <body>
+
+<div class="clock-container">
+    <div id="clock" class="clock"></div>
+</div>
 
 <div class="container">
     <div class="canvas-container">
@@ -75,6 +111,13 @@
         </div>
 
     </div>
+
+    <div class="rectangle-wrapper">
+        <div class="rectangle-7">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+
     <div class="data-container" style="display: flex; justify-content: space-around; width: 100%;">
         <div class="chart-container" style="flex: 1; height:40vh; max-width: 49%;">
             <canvas id="hourlyPriceChart"></canvas>
@@ -84,10 +127,16 @@
             <!-- Dynamic bus data will be inserted here -->
         </div>
 
-
+        <a href= "/testIndex" class="btn">Test</a>
 
 
     </div>
+    <button id="fetch-airthings-data" class="btn">Fetch Airthings Data</button>
+    <div id="airthings-data-container"></div>
+
+    <div style="padding: 10px"> </div>
+
+
     <a href="/settings" class="btn">Settings</a>
 </div>
 <div id="colors">
@@ -99,7 +148,61 @@
     <div id="purple" class="color"></div>
 </div>
 <script>
-    var config = {{ config | tojson }};
+    let config = {{ config | tojson }};
+
+
+
+    function updateClock() {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        document.getElementById('clock').textContent = `${hours}:${minutes}`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock(); // Initialize the clock immediately on page load
+
+
+    async function fetchAirthingsData() {
+        try {
+            const response = await fetch("https://ext-api.airthings.com/v1/devices/:serialNumber/latest-samples?accountId="+config.airthingsUID+"&SerialNumber="+config.airthingsDeviceId, {
+                method: 'GET',
+                headers:
+                    {
+                    "Authorization":config.airthingsAuthToken,
+                        "Accept":"application/json"
+                }
+            });
+            const data = await response.json();
+            displayAirthingsData(data);
+        }
+        catch (error) {
+            if (error.response.status == 401)
+            {alert("ei toii")}
+               // {window.location.reload();}
+            else  {
+            console.error('Failed to fetch Airthings data:', error);}
+        }
+    }
+
+    function displayAirthingsData(data) {
+        const container = document.getElementById('airthings-data-container');
+        container.innerHTML = ''; // Clear previous data
+        const deviceElem = document.createElement('div');
+            deviceElem.classList.add('airthings-device');
+            deviceElem.innerHTML = `
+                <p><strong>Temperature:</strong> ${data.temp} °C</p>
+                <p><strong>Humidity:</strong> ${data.humidity} %</p>
+                <p><strong>CO2:</strong> ${data.co2} ppm</p>
+                <p><strong>Radon:</strong> ${data.radonShortTermAvg} Bq/m³</p>
+                <p><strong>VOC:</strong> ${data.voc}</p>
+            `;
+            container.appendChild(deviceElem);
+
+    }
+
+    //document.getElementById('fetch-airthings-data').addEventListener('click', fetchAirthingsData);
+
 
     async function getPriceForHourToday(hour){
         const PRICE_ENDPOINT = 'https://api.porssisahko.net/v1/price.json';
@@ -150,7 +253,27 @@
             }
         });}
 
+
+
+
+
     window.onload = function() {
+
+        function updateProgressBar() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            const totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
+            const percentage = (totalSeconds / 86400) * 100; // 86400 seconds in a day
+
+            const progressBar = document.querySelector('.progress-bar');
+            progressBar.style.width = percentage + '%';
+        }
+
+        setInterval(updateProgressBar, 1000);
+        updateProgressBar();
+
         async function fetchAndDisplayElectricityPrices() {
             const URL = 'https://api.porssisahko.net/v1/latest-prices.json';
 
@@ -339,7 +462,6 @@
                  });
                 itineraryHtml += '</ul>';
                 itineraryElem.innerHTML = itineraryHtml;
-
                 container.appendChild(itineraryElem);
             });
                 }

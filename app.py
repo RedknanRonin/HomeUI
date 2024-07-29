@@ -1,6 +1,8 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 import json
 import os
+
+from pip._vendor import requests
 
 app = Flask(__name__)
 DRAWINGS_FILE = 'data/drawings.json'
@@ -18,6 +20,10 @@ def load_config():
         with open(CONFIG_FILE, 'r') as file:
             return json.load(file)
     return []
+
+def save_config(config):
+    with open(CONFIG_FILE, 'w') as file:
+        json.dump(config, file)
 
 def hex_to_rgba(hex, alpha=0.6):
     hex = hex.lstrip('#')
@@ -52,13 +58,36 @@ def save_settings(settings):
     with open(SETTINGS_FILE, 'w') as file:
         json.dump(settings, file)
 
+def airthingsAuth():
+    config=load_config()
+    url="https://accounts-api.airthings.com/v1/token"
+    headers = {
+        "grant_type":"client_credentials",
+        "client_id":config.get("airthingsClientId"),
+        "client_secret":config.get("airthingsClientSecret"),
+        "scope": "read:device"
+        }
+    response = requests.post(url, headers=headers)
+    print(response.json())
+    if response.status_code == 200:
+        config["airthingsAuthToken"]=response.json().get("access_token")
+        save_config(config)
+    else:
+        print("Failed to authenticate with Airthings API")
+
 @app.route('/')
 def home():
+    #airthingsAuth()
     drawings = load_drawings()
     settings = load_settings()
     config=load_config()
     selected_templates = settings.get('selected_templates', ["", ""])
     return render_template('index.html', drawings=drawings, selected_templates=selected_templates, config=config)
+
+@app.route('/<path:filename>')
+def serve_static(filename):
+    return send_from_directory('static', filename)
+
 
 @app.route('/draw')
 def draw():
@@ -74,7 +103,13 @@ def settings():
     selected_templates = settings.get('selected_templates', ["", ""])  # Get the selected templates
     return render_template('settings.html', drawings=drawings, settings=settings, selected_templates=selected_templates)
 
-
+@app.route('/testIndex')
+def testIndex():
+    drawings = load_drawings()
+    settings = load_settings()
+    config=load_config()
+    selected_templates = settings.get('selected_templates', ["", ""])
+    return render_template('testIndex.html', drawings=drawings, selected_templates=selected_templates, config=config)
 
 @app.route('/save', methods=['POST'])
 def save():
@@ -90,14 +125,8 @@ def save():
 @app.route('/save_settings', methods=['POST'])
 def save_settings_route():
     data = request.json
-    prev=load_settings()
     selected_templates = [data.get('template1', ""), data.get('template2', "")]
     settings = {'selected_templates': selected_templates, 'apiUrls': data.get('apiUrls', {}),'colors' :data.get('colors', {}) }
-
-    #for pColorMap in prev['colors']:
-     #   for pColor in (prev['colors'][pColorMap]):
-      #      if pColor not in data['colors'][pColorMap]:
-       #         data['colors'][pColorMap].append(pColor)
 
     save_settings(settings)
     return jsonify(status='success')
@@ -140,4 +169,4 @@ def api_request(color):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
