@@ -1,0 +1,1458 @@
+.overview {
+  background-color: #222325;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.overview .div {
+  background-color: #222325;
+  width: 1200px;
+  height: 2000px;
+  position: relative;
+}
+
+.overview .overlap {
+  position: absolute;
+  width: 1154px;
+  height: 1719px;
+  top: 3px;
+  left: 7px;
+}
+
+.overview .overlap-group {
+  position: absolute;
+  width: 1122px;
+  height: 37px;
+  top: 76px;
+  left: 32px;
+}
+
+.hourlyPriceChartClass {
+  position: absolute;
+  width: 980px;
+  height: 480px;
+  top: 30px;
+  left: 5%;
+  bottom: 5px;
+
+}
+
+.overview .text-wrapper {
+  position: absolute;
+  width: 122px;
+  top: 11px;
+  left: 982px;
+  opacity: 0.5;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 600;
+  color: #00ffe5;
+  font-size: 4px;
+  text-align: right;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.overview .p {
+  position: absolute;
+  width: 122px;
+  top: 9px;
+  left: 17px;
+  opacity: 0.5;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 600;
+  color: #00ffe5;
+  font-size: 4px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.overview .img {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 1122px;
+  height: 15px;
+}
+
+.overview .overlap-2 {
+  position: absolute;
+  width: 1153px;
+  height: 1482px;
+  top: 0;
+  left: 0;
+}
+
+.overview .element {
+  position: absolute;
+  width: 271px;
+  top: 943px;
+  left: -121px;
+  transform: rotate(-90deg);
+  opacity: 0.5;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 600;
+  color: #00ffe5;
+  font-size: 4px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.overview .frame {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.overview .frame-2 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  flex: 0 0 auto;
+  opacity: 0.2;
+}
+
+.overview .rectangle {
+  position: relative;
+  width: 3px;
+  height: 3px;
+  background-color: #00ffe5;
+}
+
+.overview .rectangle-2 {
+  width: 4px;
+  background-color: #00ffe5;
+  position: relative;
+  height: 3px;
+}
+
+.overview .rectangle-3 {
+  position: relative;
+  width: 5px;
+  height: 3px;
+  background-color: #00ffe5;
+}
+
+.overview .rectangle-4 {
+  position: relative;
+  width: 2px;
+  height: 3px;
+  background-color: #00ffe5;
+}
+
+.overview .rectangle-5 {
+  width: 6px;
+  background-color: #00ffe5;
+  position: relative;
+  height: 3px;
+}
+
+.overview .rectangle-6 {
+  position: relative;
+  width: 1px;
+  height: 3px;
+  background-color: #00ffe5;
+}
+
+.overview .frame-3 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.overview .current-price {
+  position: absolute;
+  width: 1120px;
+  height: 490px;
+  top: 530px;
+  left: 35px;
+}
+
+.overview .text-wrapper-2 {
+  position: absolute;
+  top: -1px;
+  left: 478px;
+  opacity: 0.5;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 500;
+  color: #ffba00;
+  font-size: 28px;
+  letter-spacing: -1.12px;
+  line-height: normal;
+}
+
+.overview .frame-4 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  position: absolute;
+  top: 734px;
+  left: 0;
+}
+
+.overview .rectangle-7 {
+  position: relative;
+  width: 6px;
+  height: 3px;
+  margin-right: -1.5px;
+  margin-left: -2.5px;
+  background-color: #00ffe5;
+}
+
+.overview .rectangle-8 {
+  position: relative;
+  width: 1px;
+  height: 3px;
+  margin-left: -2.5px;
+  background-color: #00ffe5;
+}
+
+.overview .rectangle-wrapper {
+  position: absolute;
+  width: 256px;
+  height: 6px;
+  top: 59px;
+  left: 731px;
+  border: 0.5px solid;
+  border-color: #00ffe5;
+}
+
+.overview .rectangle-9 {
+  position: absolute;
+  height: 60%;
+  width: 0; /* Initial width */
+  top: 1px;
+  left: 1px;
+  background-color: #00ffe5;
+}
+
+.overview .overlap-3 {
+  position: absolute;
+  width: 389px;
+  height: 40px;
+  top: 23px;
+  left: 39px;
+}
+
+.overview .otsikko {
+  position: absolute;
+  width: 389px;
+  height: 40px;
+  top: 0;
+  left: 0;
+}
+
+.overview .METSONHELMI {
+  position: absolute;
+  width: 338px;
+  top: 0;
+  left: 49px;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 500;
+  color: #00ffe5;
+  font-size: 21px;
+  letter-spacing: -0.84px;
+  line-height: normal;
+}
+
+.overview .overlap-group-2 {
+  position: absolute;
+  width: 63px;
+  height: 2px;
+  top: 37px;
+  left: 49px;
+}
+
+.overview .rectangle-10 {
+  position: absolute;
+  width: 19px;
+  height: 2px;
+  top: 0;
+  left: 44px;
+  background-color: #00ffe5;
+}
+
+.overview .rectangle-11 {
+  position: absolute;
+  width: 56px;
+  height: 2px;
+  top: 0;
+  left: 0;
+  background-color: #00ffe5;
+  opacity: 0.5;
+}
+
+.overview .rectangle-12 {
+  position: absolute;
+  width: 1px;
+  height: 2px;
+  top: 37px;
+  left: 115px;
+  background-color: #00ffe5;
+}
+
+.overview .rectangle-13 {
+  position: absolute;
+  width: 1px;
+  height: 2px;
+  top: 37px;
+  left: 117px;
+  background-color: #00ffe5;
+}
+
+.overview .rectangle-14 {
+  position: absolute;
+  width: 1px;
+  height: 2px;
+  top: 37px;
+  left: 124px;
+  background-color: #00ffe5;
+}
+
+.overview .rectangle-15 {
+  position: absolute;
+  width: 1px;
+  height: 2px;
+  top: 37px;
+  left: 129px;
+  background-color: #00ffe5;
+}
+
+.overview .rectangle-16 {
+  position: absolute;
+  width: 27px;
+  height: 27px;
+  top: 8px;
+  left: 6px;
+  border: 1px solid;
+  border-color: #00ffe5;
+  transform: rotate(45deg);
+}
+
+.overview .logo-int {
+  position: absolute;
+  width: 16px;
+  height: 18px;
+  top: 12px;
+  left: 11px;
+}
+
+.overview .div-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 6px;
+  height: 7px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px;
+  position: absolute;
+  top: 111px;
+  left: 8px;
+  background-color: #00ffe5;
+}
+
+.overview .text-wrapper-3 {
+  position: relative;
+  width: fit-content;
+  margin-top: -8px;
+  margin-bottom: -6px;
+  margin-left: -6px;
+  margin-right: -6px;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 4px;
+  letter-spacing: -0.16px;
+  line-height: normal;
+}
+
+.overview .divider-down {
+  top: 483px;
+  left: 32px;
+  position: absolute;
+  width: 1122px;
+  height: 15px;
+}
+
+.overview .apartment-climate {
+  position: absolute;
+  width: 1118px;
+  height: 338px;
+  top: 119px;
+  left: 35px;
+}
+
+.overview .text-wrapper-4 {
+  position: absolute;
+  top: 0;
+  left: 450px;
+  opacity: 0.5;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 500;
+  color: #ffba00;
+  font-size: 28px;
+  letter-spacing: -1.12px;
+  line-height: normal;
+}
+
+.overview .infobox {
+  top: 67px;
+  left: 836px;
+  position: absolute;
+  width: 202px;
+  height: 114px;
+}
+
+.overview .overlap-group-3 {
+  position: relative;
+  width: 194px;
+  height: 106px;
+  top: 4px;
+  left: 4px;
+}
+
+.overview .text-wrapper-5 {
+  width: 178px;
+  height: 52px;
+  top: 50%;
+  left: 14px;
+  font-weight: 600;
+  color: #5ef6ff;
+  font-size: 60px;
+  letter-spacing: 0;
+  line-height: 12px;
+  position: absolute;
+  font-family: "Rajdhani", Helvetica;
+  text-align: center;
+}
+
+.overview .rectangle-17 {
+  position: absolute;
+  width: 194px;
+  height: 106px;
+  top: 0;
+  left: 0;
+}
+
+.overview .outdoor-temp {
+  position: absolute;
+  width: 142px;
+  top: 2px;
+  left: 20px;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 600;
+  color: #e1b335;
+  font-size: 17px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.overview .rectangle-18 {
+  position: absolute;
+  width: 3px;
+  height: 104px;
+  top: 1px;
+  left: 14px;
+}
+
+.overview .overlap-wrapper {
+  top: 67px;
+  left: 583px;
+  position: absolute;
+  width: 202px;
+  height: 114px;
+}
+
+.overview .overlap-group-wrapper {
+  top: 67px;
+  left: 330px;
+  position: absolute;
+  width: 202px;
+  height: 114px;
+}
+
+.overview .infobox-2 {
+  top: 67px;
+  left: 77px;
+  position: absolute;
+  width: 202px;
+  height: 114px;
+}
+
+.overview .infobox-3 {
+  top: 211px;
+  left: 204px;
+  position: absolute;
+  width: 202px;
+  height: 114px;
+}
+
+.overview .element-2 {
+  color: #f75049;
+  position: absolute;
+  width: 178px;
+  height: 52px;
+  top: 35px;
+  left: 14px;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 600;
+  font-size: 64px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 12px;
+}
+
+.overview .infobox-4 {
+  top: 211px;
+  left: 457px;
+  position: absolute;
+  width: 202px;
+  height: 114px;
+}
+
+.overview .infobox-5 {
+  top: 211px;
+  left: 710px;
+  position: absolute;
+  width: 202px;
+  height: 114px;
+}
+
+.overview .lights {
+  position: absolute;
+  width: 1118px;
+  height: 240px;
+  top: 1097px;
+  left: 35px;
+}
+
+.overview .lights-control {
+  position: absolute;
+  width: 1087px;
+  height: 166px;
+  top: 59px;
+  left: 0;
+  overflow: hidden;
+}
+
+.overview .button-big {
+  left: 14px;
+  overflow: hidden;
+  position: absolute;
+  width: 339px;
+  height: 129px;
+  top: 9px;
+}
+
+.overview .overlap-group-4 {
+  position: absolute;
+  width: 313px;
+  height: 109px;
+  top: 10px;
+  left: 10px;
+  background-image: url(img/rectangle-113-1.svg);
+  background-size: 100% 100%;
+}
+
+.overview .overlap-group-5 {
+  position: absolute;
+  width: 312px;
+  height: 107px;
+  top: 1px;
+  left: 1px;
+}
+
+.overview .rectangle-19 {
+  position: absolute;
+  width: 5px;
+  height: 107px;
+  top: 0;
+  left: 9px;
+  background-color: #00ffe5;
+  opacity: 0.2;
+}
+
+.overview .LIVINGROOM-OFF {
+  position: absolute;
+  width: 312px;
+  top: 20px;
+  left: 0;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 600;
+  color: #ffba00;
+  font-size: 28px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.overview .frame-5 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .frame-6 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 84px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .frame-7 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 24px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .frame-8 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 64px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .frame-9 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .frame-10 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 72px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .frame-11 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 28px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .frame-12 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .frame-13 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 36px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .frame-14 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .frame-15 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .frame-16 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 52px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .frame-17 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 56px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .frame-18 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 68px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .frame-19 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 44px;
+  left: 0;
+}
+
+.overview .frame-20 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+}
+
+.overview .rectangle-20 {
+  width: 3px;
+  margin-left: -3.5px;
+  background-color: #00ffe5;
+  position: relative;
+  height: 3px;
+}
+
+.overview .rectangle-21 {
+  position: relative;
+  width: 4px;
+  height: 3px;
+  margin-left: -3.5px;
+  background-color: #00ffe5;
+}
+
+.overview .frame-21 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 76px;
+  left: 0;
+}
+
+.overview .frame-22 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 32px;
+  left: 0;
+}
+
+.overview .frame-23 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  opacity: 0.2;
+}
+
+.overview .frame-24 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 5px;
+  left: 1px;
+  opacity: 0.2;
+}
+
+.overview .frame-25 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 9px;
+  left: 1px;
+  opacity: 0.2;
+}
+
+.overview .frame-26 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 17px;
+  left: 1px;
+  opacity: 0.2;
+}
+
+.overview .frame-27 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 89px;
+  left: 1px;
+  opacity: 0.2;
+}
+
+.overview .frame-28 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 93px;
+  left: 1px;
+  opacity: 0.2;
+}
+
+.overview .rectangle-22 {
+  position: absolute;
+  width: 6px;
+  height: 3px;
+  top: 101px;
+  left: 3px;
+  background-color: #00ffe5;
+  opacity: 0.2;
+}
+
+.overview .frame-29 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 97px;
+  left: 1px;
+  opacity: 0.2;
+}
+
+.overview .rectangle-23 {
+  position: absolute;
+  width: 4px;
+  height: 3px;
+  top: 105px;
+  left: 5px;
+  background-color: #00ffe5;
+  opacity: 0.2;
+}
+
+.overview .frame-30 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 13px;
+  left: 1px;
+}
+
+.overview .rectangle-24 {
+  position: absolute;
+  width: 6px;
+  height: 33px;
+  top: 18px;
+  left: 323px;
+}
+
+.overview .rectangle-25 {
+  position: absolute;
+  width: 4px;
+  height: 3px;
+  top: -850px;
+  left: 514px;
+}
+
+.overview .button-big-2 {
+  left: 388px;
+  position: absolute;
+  width: 339px;
+  height: 129px;
+  top: 9px;
+}
+
+.overview .rectangle-26 {
+  position: absolute;
+  width: 4px;
+  height: 3px;
+  top: -850px;
+  left: 140px;
+}
+
+.overview .button-big-3 {
+  left: 762px;
+  overflow: hidden;
+  position: absolute;
+  width: 339px;
+  height: 129px;
+  top: 9px;
+}
+
+.overview .rectangle-27 {
+  position: absolute;
+  width: 2px;
+  height: 33px;
+  top: 18px;
+  left: 323px;
+}
+
+.overview .rectangle-28 {
+  position: absolute;
+  width: 4px;
+  height: 3px;
+  top: -850px;
+  left: -234px;
+}
+
+.overview .text-wrapper-6 {
+  position: absolute;
+  top: -1px;
+  left: 522px;
+  opacity: 0.5;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 500;
+  color: #ffba00;
+  font-size: 28px;
+  letter-spacing: -1.12px;
+  line-height: normal;
+}
+
+.overview .clock {
+  position: absolute;
+  width: 111px;
+  height: 58px;
+  top: 5px;
+  left: 1043px;
+  overflow: hidden;
+}
+
+.overview .text-wrapper-7 {
+  width: 109px;
+  height: 46px;
+  top: 5px;
+  left: 7px;
+  font-weight: 500;
+  color: #00ffe5;
+  font-size: 36px;
+  letter-spacing: -1.44px;
+  line-height: normal;
+  position: absolute;
+  font-family: "Rajdhani", Helvetica;
+  text-align: center;
+}
+
+.overview .transportation {
+  position: absolute;
+  width: 1121px;
+  height: 350px;
+  top: 1369px;
+  left: 33px;
+  overflow: hidden;
+}
+
+.overview .text-wrapper-8 {
+  position: absolute;
+  top: 25px;
+  left: 414px;
+  opacity: 0.5;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 500;
+  color: #ffba00;
+  font-size: 28px;
+  text-align: center;
+  letter-spacing: -1.12px;
+  line-height: normal;
+}
+
+.overview .infobox-big {
+  left: -1px;
+  position: absolute;
+  width: 359px;
+  height: 232px;
+  top: 101px;
+}
+
+.overview .overlap-group-6 {
+  position: relative;
+  width: 343px;
+  height: 220px;
+  top: 6px;
+  left: 8px;
+  background-image: url(img/rectangle-113.svg);
+  background-size: 100% 100%;
+}
+
+.overview .first-bus {
+  position: absolute;
+  width: 295px;
+  top: 18px;
+  left: 38px;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 600;
+  color: #ffba00;
+  font-size: 28px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.overview .rectangle-29 {
+  position: absolute;
+  width: 5px;
+  height: 218px;
+  top: 1px;
+  left: 23px;
+  background-color: #5ef6ff;
+  opacity: 0.3;
+}
+
+.overview .element-line-from {
+  position: absolute;
+  width: 295px;
+  top: 63px;
+  left: 38px;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 600;
+  color: #5ef6ff;
+  font-size: 28px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.overview .infobox-big-2 {
+  left: 380px;
+  position: absolute;
+  width: 359px;
+  height: 232px;
+  top: 101px;
+}
+
+.overview .infobox-big-3 {
+  left: 761px;
+  position: absolute;
+  width: 359px;
+  height: 232px;
+  top: 101px;
+}
+
+.overview .divider-down-2 {
+  top: 1055px;
+  position: absolute;
+  width: 1122px;
+  height: 15px;
+  left: 32px;
+}
+
+.overview .divider-down-3 {
+  top: 1351px;
+  position: absolute;
+  width: 1122px;
+  height: 15px;
+  left: 32px;
+}
+
+.overview .overlap-4 {
+  position: absolute;
+  width: 1122px;
+  height: 47px;
+  top: 1935px;
+  left: 39px;
+}
+
+.overview .connection {
+  position: absolute;
+  width: 164px;
+  top: 21px;
+  left: 1px;
+  opacity: 0.5;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 600;
+  color: #00ffe5;
+  font-size: 7px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.overview .powered-by-arasaka {
+  position: absolute;
+  width: 68px;
+  top: 19px;
+  left: 1054px;
+  opacity: 0.5;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 600;
+  color: #00ffe5;
+  font-size: 7px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.overview .overlap-5 {
+  position: absolute;
+  width: 1122px;
+  height: 26px;
+  top: 0;
+  left: 0;
+}
+
+.overview .ARASAKA-CONSUMER {
+  position: absolute;
+  top: 14px;
+  left: 274px;
+  opacity: 0.5;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 600;
+  color: #00ffe5;
+  font-size: 8px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 12px;
+  white-space: nowrap;
+}
+
+.overview .logo {
+  position: absolute;
+  width: 20px;
+  height: 10px;
+  top: 1983px;
+  left: 6px;
+}
+
+.overview .frame-31 {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  position: absolute;
+  top: 0;
+  left: 1169px;
+}
+
+.overview .frame-32 {
+  display: flex;
+  flex-direction: column;
+  width: 6px;
+  height: 7px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px;
+  position: relative;
+  background-color: #00ffe5;
+}
+
+.overview .frame-33 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.overview .divider-up {
+  top: 1768px;
+  left: 39px;
+  position: absolute;
+  width: 1122px;
+  height: 15px;
+}
+
+.overview .button-small {
+  left: 319px;
+  position: absolute;
+  width: 277px;
+  height: 97px;
+  top: 1807px;
+}
+
+.overview .overlap-6 {
+  position: absolute;
+  width: 240px;
+  height: 61px;
+  top: 18px;
+  left: 16px;
+  background-image: url(img/rectangle-119.svg);
+  background-size: 100% 100%;
+}
+
+.overview .overlap-group-7 {
+  position: absolute;
+  width: 239px;
+  height: 59px;
+  top: 1px;
+  left: 1px;
+}
+
+.overview .rectangle-30 {
+  position: absolute;
+  width: 5px;
+  height: 59px;
+  top: 0;
+  left: 9px;
+  background-color: #5ef6ff;
+  opacity: 0.2;
+}
+
+.overview .frame-34 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 16px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .rectangle-31 {
+  width: 5px;
+  background-color: #5ef6ff;
+  position: relative;
+  height: 3px;
+}
+
+.overview .rectangle-32 {
+  position: relative;
+  width: 2px;
+  height: 3px;
+  background-color: #5ef6ff;
+}
+
+.overview .frame-35 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 12px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .rectangle-33 {
+  width: 3px;
+  background-color: #5ef6ff;
+  position: relative;
+  height: 3px;
+}
+
+.overview .rectangle-34 {
+  width: 4px;
+  background-color: #5ef6ff;
+  position: relative;
+  height: 3px;
+}
+
+.overview .rectangle-35 {
+  width: 6px;
+  background-color: #5ef6ff;
+  position: relative;
+  height: 3px;
+}
+
+.overview .rectangle-36 {
+  position: relative;
+  width: 1px;
+  height: 3px;
+  background-color: #5ef6ff;
+}
+
+.overview .frame-36 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 32px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .frame-37 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 44px;
+  left: 0;
+  opacity: 0.2;
+}
+
+.overview .vector {
+  top: 36px;
+  left: 0;
+  position: absolute;
+  width: 8px;
+  height: 3px;
+}
+
+.overview .vector-2 {
+  top: 24px;
+  left: 0;
+  position: absolute;
+  width: 8px;
+  height: 3px;
+}
+
+.overview .text-wrapper-9 {
+  position: absolute;
+  width: 239px;
+  top: 12px;
+  left: 0;
+  font-family: "Rajdhani", Helvetica;
+  font-weight: 600;
+  color: #ffba00;
+  font-size: 28px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.overview .frame-38 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 49px;
+  left: 1px;
+  opacity: 0.2;
+}
+
+.overview .rectangle-37 {
+  position: absolute;
+  width: 4px;
+  height: 3px;
+  top: 57px;
+  left: 5px;
+  background-color: #5ef6ff;
+  opacity: 0.2;
+}
+
+.overview .frame-39 {
+  display: flex;
+  width: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 53px;
+  left: 1px;
+  opacity: 0.2;
+}
+
+.overview .vector-3 {
+  top: 5px;
+  left: 1px;
+  position: absolute;
+  width: 8px;
+  height: 3px;
+}
+
+.overview .rectangle-38 {
+  position: absolute;
+  width: 6px;
+  height: 24px;
+  top: 25px;
+  left: 256px;
+}
+
+.overview .button-small-2 {
+  left: 603px;
+  position: absolute;
+  width: 277px;
+  height: 97px;
+  top: 1807px;
+}
+
+.overview .button-small-3 {
+  left: 894px;
+  position: absolute;
+  width: 277px;
+  height: 97px;
+  top: 1807px;
+}
+
+.overview .button-small-4 {
+  left: 31px;
+  position: absolute;
+  width: 277px;
+  height: 97px;
+  top: 1807px;
+}
+
+.overview .overlap-7 {
+  position: absolute;
+  width: 240px;
+  height: 61px;
+  top: 18px;
+  left: 16px;
+  background-image: url(img/rectangle-119-1.svg);
+  background-size: 100% 100%;
+}

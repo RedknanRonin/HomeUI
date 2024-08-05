@@ -128,11 +128,17 @@
         </div>
 
         <a href= "/testIndex" class="btn">Test</a>
+        <a href="/first" class="btn"> Actual </a>
 
 
     </div>
     <button id="fetch-airthings-data" class="btn">Fetch Airthings Data</button>
     <div id="airthings-data-container"></div>
+
+    <div style="padding: 10px"> </div>
+
+    <div id="ruuvitag-data-container"></div>
+
 
     <div style="padding: 10px"> </div>
 
@@ -165,24 +171,24 @@
 
     async function fetchAirthingsData() {
         try {
-            const response = await fetch("https://ext-api.airthings.com/v1/devices/:serialNumber/latest-samples?accountId="+config.airthingsUID+"&SerialNumber="+config.airthingsDeviceId, {
+            const response = await fetch("https://ext-api.airthings.com/v1/devices/"+config.airthingsDeviceId+"/latest-samples?accountId="+config.airthingsUID, {
                 method: 'GET',
                 headers:
                     {
                     "Authorization":config.airthingsAuthToken,
-                        "Accept":"application/json"
+                    "Accept":"application/json"
                 }
             });
             const data = await response.json();
             displayAirthingsData(data);
+            console.log(data)
         }
         catch (error) {
-            if (error.response.status == 401)
-            {alert("ei toii")}
-               // {window.location.reload();}
-            else  {
+           // if (error.response.status == 401) {
+             //   window.location.reload();}   //reload page to refresh token
+        //    else  {
             console.error('Failed to fetch Airthings data:', error);}
-        }
+
     }
 
     function displayAirthingsData(data) {
@@ -191,18 +197,46 @@
         const deviceElem = document.createElement('div');
             deviceElem.classList.add('airthings-device');
             deviceElem.innerHTML = `
-                <p><strong>Temperature:</strong> ${data.temp} °C</p>
-                <p><strong>Humidity:</strong> ${data.humidity} %</p>
-                <p><strong>CO2:</strong> ${data.co2} ppm</p>
-                <p><strong>Radon:</strong> ${data.radonShortTermAvg} Bq/m³</p>
-                <p><strong>VOC:</strong> ${data.voc}</p>
+                <p><strong>Temperature:</strong> ${data.data.temp} °C</p>
+                <p><strong>Humidity:</strong> ${data.data.humidity} %</p>
+                <p><strong>CO2:</strong> ${data.data.co2} ppm</p>
+                <p><strong>Radon:</strong> ${data.data.radonShortTermAvg} Bq/m³</p>
+                <p><strong>VOC:</strong> ${data.data.voc}</p>
             `;
             container.appendChild(deviceElem);
 
     }
 
-    //document.getElementById('fetch-airthings-data').addEventListener('click', fetchAirthingsData);
+    document.getElementById('fetch-airthings-data').addEventListener('click', fetchAirthingsData);
 
+
+    async function fetchRuuviTagData() {
+        try {
+            const response = await fetch('/ruuvitag_data');
+            const data = await response.json();
+            displayRuuviTagData(data);
+        } catch (error) {
+            console.error('Failed to fetch RuuviTag data:', error);
+        }
+    }
+
+    function displayRuuviTagData(data) {
+        const container = document.getElementById('ruuvitag-data-container');
+        container.innerHTML = ''; // Clear previous data
+        const tagElem = document.createElement('div');
+        tagElem.classList.add('ruuvi-tag');
+        tagElem.innerHTML = `
+                <p><strong>Temperature in fridge:</strong> ${data["D9:9C:2D:02:42:29"]} °C</p>
+                <p><strong>Temperature outside:</strong> ${data["CE:6C:D7:43:EB:29"]} °C</p>
+                <p><strong>Temperature inside:</strong> ${data["EB:24:02:73:82:FB"]} °C</p>
+
+            `;
+            container.appendChild(tagElem);
+        }
+
+
+    setInterval(fetchRuuviTagData, 300000); // Fetch data every 5 minutes
+    fetchRuuviTagData(); // Initial fetch on page load
 
     async function getPriceForHourToday(hour){
         const PRICE_ENDPOINT = 'https://api.porssisahko.net/v1/price.json';
@@ -220,38 +254,7 @@
         return price;}
     //requires anti cors measures on localhost
 
-    elecPrice=async function (){
-        const prices = [];
-        const hours = [];
-        for (let i = 0; i < 24; i++) {
-            hours.push(`${i}:00`);
-            // Assuming getPriceForHourToday returns a promise that resolves with the price
-            const price = await getPriceForHourToday(i);
-            prices.push(price);
-        }
 
-        const ctx = document.getElementById('hourlyPriceChart').getContext('2d');
-        const hourlyPriceChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: hours,
-                datasets: [{
-                    label: 'Sähkön hinta snt/kWh',
-                    data: prices,
-                    fill: true,
-                    borderColor: 'rgb(175, 192, 192)',
-                    backgroundColor: 'rgb(40,173,173)',
-                    tension: 0.1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });}
 
 
 
@@ -304,8 +307,12 @@
 
         function updateElectricityPriceChart(labels, data) {
             const ctx = document.getElementById('hourlyPriceChart').getContext('2d');
-            const backgroundColors = labels.map(label => {  
-                return  'rgba(75,192,192,0.6)';
+            const backgroundColors = labels.map((label) => {
+                if (label === "0:00") {
+                    return 'rgba(255, 99, 132, 0.6)'; // Highlight the current hour
+                }  else {
+                    return 'rgba(75,192,192,0.6)'; // Past hours
+                }
             });
 
             const chartExists = Chart.getChart('hourlyPriceChart'); // Check if the chart instance exists
