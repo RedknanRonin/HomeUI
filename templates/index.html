@@ -1316,7 +1316,7 @@
                 <div class="overlap-group-4">
                   <div class="overlap-group-5">
                     <div class="rectangle-19"></div>
-                    <a class="LIVINGROOM-OFF" id="livingroom_off">LIVINGROOM<br />OFF</a>
+                    <a class="LIVINGROOM-OFF" id="livingroom_off" href="/livingroomOff">LIVINGROOM<br />OFF</a>
                     <div class="frame-5">
                       <div class="rectangle-3"></div>
                       <div class="rectangle-4"></div>
@@ -1440,7 +1440,7 @@
                 <div class="overlap-group-4">
                   <div class="overlap-group-5">
                     <div class="rectangle-19"></div>
-                    <div class="LIVINGROOM-OFF" id="livingroom_on">LIVINGROOM<br />DAY</div>
+                    <a class="LIVINGROOM-OFF" id="livingroom_on" href="/livingroomOn">LIVINGROOM<br />DAY</a>
                     <div class="frame-5">
                       <div class="rectangle-3"></div>
                       <div class="rectangle-4"></div>
@@ -2844,53 +2844,8 @@
           setInterval(fetchRuuviTagData, 300000); // Fetch data every 5 minutes
 
 
-          document.getElementById('livingroom_on').addEventListener('click', async () => {
-              const url = config['livingroomOn'];
-              const body = {
-                  "on": {
-                      "on": true
-                  }
-              };
-              const headers = {
-                  'Content-Type': 'application/json',
-                  'hue-application-key': config['hueApiKey'] // Replace with your actual key
-              };
+        ;
 
-              try {
-                  const response = await fetch(url, {
-                      method: 'PUT',
-                      headers: headers,
-                      body: JSON.stringify(body)
-                  });
-
-                  if (!response.ok) {
-                      throw new Error('Network response was not ok');
-                  }
-
-                  const data = await response.json();
-                  console.log('Success:', data);
-              } catch (error) {
-                  console.error('Error:', error);
-              }
-
-
-              document.getElementById('livingroom_off').addEventListener('click', () => {
-                  const response = fetch(config.livingroomOff, {
-                      method: 'PUT',
-                      headers: {
-                          'Content-Type': 'application/json',
-                          'hue-application-key': config["hueApiKey"]
-                      },
-                      body: JSON.stringify({
-                          "on": {
-                              "on": "false"
-                          }
-                      })
-                  });
-
-              });
-
-          }    )
       }
 
   </script>

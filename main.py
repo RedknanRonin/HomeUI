@@ -140,7 +140,6 @@ def hueAuth():
             print("Failed to obtain refresh token")
 
 
-
 @app.route('/')
 def home():
     hueAuth()
@@ -159,6 +158,27 @@ async def get_ruuvitag_data():
     print(res)
     return jsonify(res)
 
+@app.route('/livingroomOn')
+def livingroomOn():
+    print("kan")
+    config = load_config()
+    url = config["livingroomOn"]
+    headers= {"Authorization": "Bearer "+config["hueAuthToken"]}
+    body = {"on":True}
+    response = requests.put(url, headers=headers, json=body)
+    print(response)
+    return render_template('index.html',config=config)
+
+
+@app.route('/livingroomOff')
+def livingroomOff():
+    config = load_config()
+    url = config["livingroomOff"]
+    headers= {"Authorization": "Bearer "+config["hueAuthToken"]}
+    body = {"on":False}
+    response = requests.put(url, headers=headers, json=body)
+    print(response)
+    return render_template('index.html',config=config)
 
 if __name__ == "__main__":
     app.run(debug="True",host="0.0.0.0", port=5000)
