@@ -1,479 +1,2700 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Home</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            background-color: #f0f0f0;
-        }
-        .container {
-            text-align: center;
-        }
-        .btn {
-            padding: 10px 20px;
-            font-size: 18px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 20px;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        .canvas-container {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-        }
-        .template {
-            text-align: center;
-        }
-        #gridCanvas1, #gridCanvas2 {
-            border: 1px solid black;
-            background: #f0f0f0;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            margin-right: 20px;
-            margin-left: 20px;
-        }
-        .chart-container {
-            flex: 1;
-            height: 40vh;
-            max-width: 49%;
-            margin-right: 1%; /* Adds a buffer to the right */
-        }
-        .bus-container {
-            flex: 1;
-            height: 40vh;
-            max-width: 49%;
-            overflow-y: auto;
-        }
-        .clock-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 25%; /* Adjust based on the size of other containers */
-            height: 40vh; /* Adjust to match the height of other containers */
-            margin: 0 auto; /* Center the container */
-            background-color: #f0f0f0; /* Optional: match the page background or set a different color */
-            border: 1px solid #ddd; /* Optional: add a border to match other containers */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: add shadow for depth */
-            margin-bottom: 20px; /* Space from the next element */
-            margin-top:10%;
-        }
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../static/globals.css" />
+    <link rel="stylesheet" href="../static/styleguide.css" />
+    <link rel="stylesheet" href="../static/style.css" />
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="overview">
+      <div class="div">
+        <div class="overlap">
+          <div class="overlap-group">
+            <p class="text-wrapper">
+              THIS DATA FORTRES IS PROTECTED BY INTERNATIONAL LAWS. ANY VIOLATIONS WILL BE PUNISHED.
+            </p>
+            <p class="p">THIS DEVICE IS BLACKWALL PROTECTED AND ANY HACK ATTEMPTS WILL NOT BE TOLERATED</p>
+            <img class="img" src="../static/img/divider-down.svg" />
+          </div>
+          <div class="overlap-2">
+            <p class="element">78923 23899402 289J9DJ239032D XX892389D3 34829 2320</p>
+            <div class="frame">
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-3">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+            </div>
+            <div class="current-price"><div class="text-wrapper-2">CURRENT PRICE</div>
+                <canvas class="hourlyPriceChartClass" id="hourlyPriceChart"></canvas>
+            </div>
+            <div class="frame-4">
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-3">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-7"></div>
+                <div class="rectangle-8"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-5"></div>
+                <div class="rectangle-6"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle-2"></div>
+                <div class="rectangle"></div>
+              </div>
+              <div class="frame-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+              </div>
+            </div>
+          </div>
 
-        .clock {
-            font-size: 100px; /* Adjust the clock font size as needed */
-            font-family: "Bauhaus 93";
-        }
 
-        .rectangle-7 {
-            position: relative;
-            width: 30%;
-            height: 10px; /* Adjust height as needed */
-            background-color: #e0e0e0; /* Background color of the progress bar container */
-        }
+          <div class="rectangle-wrapper"><div class="rectangle-9"></div></div>
+          <div class="overlap-3">
+            <div class="otsikko">
+              <div class="METSONHELMI">METSONHELMI A4 MAINFRAME MK.5</div>
+              <div class="overlap-group-2">
+                <div class="rectangle-10"></div>
+                <div class="rectangle-11"></div>
+              </div>
+              <div class="rectangle-12"></div>
+              <div class="rectangle-13"></div>
+              <div class="rectangle-14"></div>
+              <div class="rectangle-15"></div>
+              <div class="rectangle-16"></div>
+            </div>
+            <img class="logo-int" src="../static/img/logo-int.svg" />
+          </div>
+          <div class="div-wrapper"><div class="text-wrapper-3">1</div></div>
+          <img class="divider-down" src="../static/img/divider-down.svg" />
 
-        .progress-bar {
-            position: absolute;
-            height: 100%;
-            width: 0; /* Initial width */
-            background-color: #76c7c0; /* Color of the progress bar */
-        }
-    </style>
-</head>
-<body>
 
-<div class="clock-container">
-    <div id="clock" class="clock"></div>
-</div>
+          <div class="apartment-climate">
+            <div class="text-wrapper-4">APARTMENT CLIMATE</div>
+            <div class="infobox">
+              <div class="overlap-group-3">
+                <div class="text-wrapper-5" id="fridgeTemp">null</div>
+                <img class="rectangle-17" src="../static/img/rectangle-115-1.svg" />
+                <div class="outdoor-temp" >FRIDGE TEMP</div>
+                <img class="rectangle-18" src="../static/img/rectangle-116-1.svg" />
+              </div>
+            </div>
+            <div class="overlap-wrapper">
+              <div class="overlap-group-3">
+                <div class="text-wrapper-5" id="airsupllyTemp">0</div>
+                <img class="rectangle-17" src="../static/img/rectangle-115-1.svg" />
+                <div class="outdoor-temp">SUPPLY AIR TEMP</div>
+                <img class="rectangle-18" src="../static/img/rectangle-116-1.svg" />
+              </div>
+            </div>
+            <div class="overlap-group-wrapper">
+              <div class="overlap-group-3">
+                <div class="text-wrapper-5" id="insideTemp">null</div>
+                <img class="rectangle-17" src="../static/img/rectangle-115-1.svg" />
+                <div class="outdoor-temp">INDOOR TEMP</div>
+                <img class="rectangle-18" src="../static/img/rectangle-116-1.svg" />
+              </div>
+            </div>
+            <div class="infobox-2">
+              <div class="overlap-group-3">
+                <div class="text-wrapper-5" id="outsideTemp">null</div>
+                <img class="rectangle-17" src="../static/img/rectangle-115-1.svg" />
+                <div class="outdoor-temp">OUTDOOR TEMP</div>
+                <img class="rectangle-18" src="../static/img/rectangle-116-1.svg" />
+              </div>
+            </div>
+            <div class="infobox-3">
+              <div class="overlap-group-3">
+                <div class="text-wrapper-lower3" id="co2_value">HIGH</div>
+                <img class="rectangle-17" src="../static/img/rectangle-115-1.svg" />
+                <div class="outdoor-temp" >CO2</div>
+                <img class="rectangle-18" src="../static/img/rectangle-116-1.svg" />
+              </div>
+            </div>
+            <div class="infobox-4">
+              <div class="overlap-group-3">
+                <div class="text-wrapper-lower3" id ="radon_value">LOW</div>
+                <img class="rectangle-17" src="../static/img/rectangle-115-1.svg" />
+                <div class="outdoor-temp" >RADON</div>
+                <img class="rectangle-18" src="../static/img/rectangle-116-1.svg" />
+              </div>
+            </div>
+            <div class="infobox-5">
+              <div class="overlap-group-3">
+                <div class="text-wrapper-lower3" id="voc_value">MED</div>
+                <img class="rectangle-17" src="../static/img/rectangle-115-1.svg" />
+                <div class="outdoor-temp" >VOC</div>
+                <img class="rectangle-18" src="../static/img/rectangle-116-1.svg" />
+              </div>
+            </div>
+          </div>
+          <div class="lights">
+            <div class="lights-control">
+              <div class="button-big">
+                <div class="overlap-group-4">
+                  <div class="overlap-group-5">
+                    <div class="rectangle-19"></div>
+                    <a class="LIVINGROOM-OFF" id="livingroom_off">LIVINGROOM<br />OFF</a>
+                    <div class="frame-5">
+                      <div class="rectangle-3"></div>
+                      <div class="rectangle-4"></div>
+                    </div>
+                    <div class="frame-6">
+                      <div class="rectangle-3"></div>
+                      <div class="rectangle-4"></div>
+                    </div>
+                    <div class="frame-7">
+                      <div class="rectangle-3"></div>
+                      <div class="rectangle-4"></div>
+                    </div>
+                    <div class="frame-8">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-9">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-10">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-11">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-12">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-13">
+                      <div class="rectangle-5"></div>
+                      <div class="rectangle-6"></div>
+                    </div>
+                    <div class="frame-14">
+                      <div class="rectangle-3"></div>
+                      <div class="rectangle-4"></div>
+                    </div>
+                    <div class="frame-15">
+                      <div class="rectangle-3"></div>
+                      <div class="rectangle-4"></div>
+                    </div>
+                    <div class="frame-16">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-17">
+                      <div class="rectangle-5"></div>
+                      <div class="rectangle-6"></div>
+                    </div>
+                    <div class="frame-18">
+                      <div class="rectangle-2"></div>
+                      <div class="rectangle"></div>
+                    </div>
+                    <div class="frame-19">
+                      <div class="frame-20">
+                        <div class="rectangle"></div>
+                        <div class="rectangle-2"></div>
+                      </div>
+                      <div class="rectangle-20"></div>
+                      <div class="rectangle-21"></div>
+                    </div>
+                    <div class="frame-21">
+                      <div class="frame-20">
+                        <div class="rectangle"></div>
+                        <div class="rectangle-2"></div>
+                      </div>
+                      <div class="rectangle-20"></div>
+                      <div class="rectangle-21"></div>
+                    </div>
+                    <div class="frame-22">
+                      <div class="frame-20">
+                        <div class="rectangle"></div>
+                        <div class="rectangle-2"></div>
+                      </div>
+                      <div class="rectangle-20"></div>
+                      <div class="rectangle-21"></div>
+                    </div>
+                  </div>
+                  <div class="frame-23">
+                    <div class="rectangle-3"></div>
+                    <div class="rectangle-4"></div>
+                  </div>
+                  <div class="frame-24">
+                    <div class="rectangle-2"></div>
+                    <div class="rectangle"></div>
+                  </div>
+                  <div class="frame-25">
+                    <div class="rectangle"></div>
+                    <div class="rectangle-2"></div>
+                  </div>
+                  <div class="frame-26">
+                    <div class="rectangle-5"></div>
+                    <div class="rectangle-6"></div>
+                  </div>
+                  <div class="frame-27">
+                    <div class="rectangle-5"></div>
+                    <div class="rectangle-6"></div>
+                  </div>
+                  <div class="frame-28">
+                    <div class="rectangle"></div>
+                    <div class="rectangle-2"></div>
+                  </div>
+                  <div class="rectangle-22"></div>
+                  <div class="frame-29">
+                    <div class="rectangle-3"></div>
+                    <div class="rectangle-4"></div>
+                  </div>
+                  <div class="rectangle-23"></div>
+                  <div class="frame-30">
+                    <div class="rectangle"></div>
+                    <div class="rectangle-2"></div>
+                  </div>
+                </div>
+                <img class="rectangle-24" src="../static/img/rectangle-117-2.svg" />
+                <img class="rectangle-25" src="../static/img/rectangle-112.png" />
+              </div>
+              <div class="button-big-2">
+                <div class="overlap-group-4">
+                  <div class="overlap-group-5">
+                    <div class="rectangle-19"></div>
+                    <div class="LIVINGROOM-OFF" id="livingroom_on">LIVINGROOM<br />DAY</div>
+                    <div class="frame-5">
+                      <div class="rectangle-3"></div>
+                      <div class="rectangle-4"></div>
+                    </div>
+                    <div class="frame-6">
+                      <div class="rectangle-3"></div>
+                      <div class="rectangle-4"></div>
+                    </div>
+                    <div class="frame-7">
+                      <div class="rectangle-3"></div>
+                      <div class="rectangle-4"></div>
+                    </div>
+                    <div class="frame-8">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-9">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-10">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-11">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-12">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-13">
+                      <div class="rectangle-5"></div>
+                      <div class="rectangle-6"></div>
+                    </div>
+                    <div class="frame-14">
+                      <div class="rectangle-3"></div>
+                      <div class="rectangle-4"></div>
+                    </div>
+                    <div class="frame-15">
+                      <div class="rectangle-3"></div>
+                      <div class="rectangle-4"></div>
+                    </div>
+                    <div class="frame-16">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-17">
+                      <div class="rectangle-5"></div>
+                      <div class="rectangle-6"></div>
+                    </div>
+                    <div class="frame-18">
+                      <div class="rectangle-2"></div>
+                      <div class="rectangle"></div>
+                    </div>
+                    <div class="frame-19">
+                      <div class="frame-20">
+                        <div class="rectangle"></div>
+                        <div class="rectangle-2"></div>
+                      </div>
+                      <div class="rectangle-20"></div>
+                      <div class="rectangle-21"></div>
+                    </div>
+                    <div class="frame-21">
+                      <div class="frame-20">
+                        <div class="rectangle"></div>
+                        <div class="rectangle-2"></div>
+                      </div>
+                      <div class="rectangle-20"></div>
+                      <div class="rectangle-21"></div>
+                    </div>
+                    <div class="frame-22">
+                      <div class="frame-20">
+                        <div class="rectangle"></div>
+                        <div class="rectangle-2"></div>
+                      </div>
+                      <div class="rectangle-20"></div>
+                      <div class="rectangle-21"></div>
+                    </div>
+                  </div>
+                  <div class="frame-23">
+                    <div class="rectangle-3"></div>
+                    <div class="rectangle-4"></div>
+                  </div>
+                  <div class="frame-24">
+                    <div class="rectangle-2"></div>
+                    <div class="rectangle"></div>
+                  </div>
 
-<div class="container">
-    <div class="canvas-container">
-        <div class="template">
-            <h2 id="templateName1">Template 1</h2>
-            <canvas id="gridCanvas1" width="400" height="300"></canvas>
+                    <div class="frame-26">
+                        <div class="rectangle-5"></div>
+                        <div class="rectangle-6"></div>
+                  <div class="frame-25">
+                    <div class="rectangle"></div>
+                    <div class="rectangle-2"></div>
+                  </div>
+
+                  </div>
+                  <div class="frame-27">
+                    <div class="rectangle-5"></div>
+                    <div class="rectangle-6"></div>
+                  </div>
+                  <div class="frame-28">
+                    <div class="rectangle"></div>
+                    <div class="rectangle-2"></div>
+                  </div>
+                  <div class="rectangle-22"></div>
+                  <div class="frame-29">
+                    <div class="rectangle-3"></div>
+                    <div class="rectangle-4"></div>
+                  </div>
+                  <div class="rectangle-23"></div>
+                  <div class="frame-30">
+                    <div class="rectangle"></div>
+                    <div class="rectangle-2"></div>
+                  </div>
+                </div>
+                <img class="rectangle-24" src="../static/img/rectangle-117-2.svg" />
+                <img class="rectangle-26" src="../static/img/rectangle-112.png" />
+              </div>
+              <div class="button-big-3">
+                <div class="overlap-group-4">
+                  <div class="overlap-group-5">
+                    <div class="rectangle-19"></div>
+                    <div class="LIVINGROOM-OFF">LIVINGROOM<br />EVENING</div>
+                    <div class="frame-5">
+                      <div class="rectangle-3"></div>
+                      <div class="rectangle-4"></div>
+                    </div>
+                    <div class="frame-6">
+                      <div class="rectangle-3"></div>
+                      <div class="rectangle-4"></div>
+                    </div>
+                    <div class="frame-7">
+                      <div class="rectangle-3"></div>
+                      <div class="rectangle-4"></div>
+                    </div>
+                    <div class="frame-8">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-9">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-10">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-11">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-12">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-13">
+                      <div class="rectangle-5"></div>
+                      <div class="rectangle-6"></div>
+                    </div>
+                    <div class="frame-14">
+                      <div class="rectangle-3"></div>
+                      <div class="rectangle-4"></div>
+                    </div>
+                    <div class="frame-15">
+                      <div class="rectangle-3"></div>
+                      <div class="rectangle-4"></div>
+                    </div>
+                    <div class="frame-16">
+                      <div class="rectangle"></div>
+                      <div class="rectangle-2"></div>
+                    </div>
+                    <div class="frame-17">
+                      <div class="rectangle-5"></div>
+                      <div class="rectangle-6"></div>
+                    </div>
+                    <div class="frame-18">
+                      <div class="rectangle-2"></div>
+                      <div class="rectangle"></div>
+                    </div>
+                    <div class="frame-19">
+                      <div class="frame-20">
+                        <div class="rectangle"></div>
+                        <div class="rectangle-2"></div>
+                      </div>
+                      <div class="rectangle-20"></div>
+                      <div class="rectangle-21"></div>
+                    </div>
+                    <div class="frame-21">
+                      <div class="frame-20">
+                        <div class="rectangle"></div>
+                        <div class="rectangle-2"></div>
+                      </div>
+                      <div class="rectangle-20"></div>
+                      <div class="rectangle-21"></div>
+                    </div>
+                    <div class="frame-22">
+                      <div class="frame-20">
+                        <div class="rectangle"></div>
+                        <div class="rectangle-2"></div>
+                      </div>
+                      <div class="rectangle-20"></div>
+                      <div class="rectangle-21"></div>
+                    </div>
+                  </div>
+                  <div class="frame-23">
+                    <div class="rectangle-3"></div>
+                    <div class="rectangle-4"></div>
+                  </div>
+                  <div class="frame-24">
+                    <div class="rectangle-2"></div>
+                    <div class="rectangle"></div>
+                  </div>
+                  <div class="frame-25">
+                    <div class="rectangle"></div>
+                    <div class="rectangle-2"></div>
+                  </div>
+                  <div class="frame-26">
+                    <div class="rectangle-5"></div>
+                    <div class="rectangle-6"></div>
+                  </div>
+                  <div class="frame-27">
+                    <div class="rectangle-5"></div>
+                    <div class="rectangle-6"></div>
+                  </div>
+                  <div class="frame-28">
+                    <div class="rectangle"></div>
+                    <div class="rectangle-2"></div>
+                  </div>
+                  <div class="rectangle-22"></div>
+                  <div class="frame-29">
+                    <div class="rectangle-3"></div>
+                    <div class="rectangle-4"></div>
+                  </div>
+                  <div class="rectangle-23"></div>
+                  <div class="frame-30">
+                    <div class="rectangle"></div>
+                    <div class="rectangle-2"></div>
+                  </div>
+                </div>
+                <img class="rectangle-27" src="../static/img/rectangle-117-5.svg" />
+                <img class="rectangle-28" src="../static/img/rectangle-112.png" />
+              </div>
+            </div>
+            <div class="text-wrapper-6">LIGHTS</div>
+          </div>
+          <div class="clock"><div class="text-wrapper-7" id="clock"></div></div>
+          <div class="transportation">
+            <div class="text-wrapper-8">TRANSPORTATION TO RAILWAY STATION</div>
+            <div class="infobox-big">
+              <div class="overlap-group-6">
+                <div class="first-bus">FIRST BUS</div>
+                <div class="rectangle-29"></div>
+                <p class="element-line-from" id="bus_0" >12:02 - LINE 12<br />FROM STOP AT 12:09<br />ARRIVE 12:24</p>
+              </div>
+            </div>
+            <div class="infobox-big-2">
+              <div class="overlap-group-6">
+                <div class="first-bus">SECOND BUS</div>
+                <div class="rectangle-29"></div>
+                <p class="element-line-from" id="bus_1">12:02 - LINE 12<br />FROM STOP AT 12:09<br />ARRIVE 12:24</p>
+              </div>
+            </div>
+            <div class="infobox-big-3">
+              <div class="overlap-group-6">
+                <div class="first-bus">THIRD BUS</div>
+                <div class="rectangle-29"></div>
+                <p class="element-line-from" id="bus_2">12:02 - LINE 12<br />FROM STOP AT 12:09<br />ARRIVE 12:24</p>
+              </div>
+            </div>
+          </div>
+          <img class="divider-down-2" src="../static/img/divider-down.svg" />
+          <img class="divider-down-3" src="../static/img/divider-down.svg" />
         </div>
-        <div class="template">
-            <h2 id="templateName2">Template 2</h2>
-            <canvas id="gridCanvas2" width="400" height="300"></canvas>
+        <div class="overlap-4">
+          <p class="connection">
+            CONNECTION ESTABLISHED TO BACKEND SERVER NODE 3. LOGGING LEVEL SET TO INT-5. ALL WARNING MESSAGES DISMISSED.
+          </p>
+          <p class="powered-by-arasaka">POWERED BY ARASAKA CYBERCORE V0.5</p>
+          <div class="overlap-5">
+            <p class="ARASAKA-CONSUMER">
+              ARASAKA CONSUMER TECHNOLOGY. ONLY CE65 CERTIFIED, CORE TEAM MEMBERS AND DHSF 4TH CLASS OFFICERS ARE
+              ALLOWED TO MANIPULATE, ACCESS OR DISABLE THESE DEVICE
+            </p>
+            <img class="img" src="../static/img/divider-up.svg" />
+          </div>
         </div>
-
+        <img class="logo" src="../static/img/logo.svg" />
+        <div class="frame-31">
+          <div class="frame-32"><div class="text-wrapper-3">2</div></div>
+          <div class="frame-33">
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-3">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-3">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-3">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-3"></div>
+              <div class="rectangle-4"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle-2"></div>
+              <div class="rectangle"></div>
+            </div>
+            <div class="frame-2">
+              <div class="rectangle"></div>
+              <div class="rectangle-2"></div>
+            </div>
+          </div>
+        </div>
+        <img class="divider-up" src="../static/img/divider-up.svg" />
+        <div class="button-small">
+          <div class="overlap-6">
+            <div class="overlap-group-7">
+              <div class="rectangle-30"></div>
+              <div class="frame-34">
+                <div class="rectangle-31"></div>
+                <div class="rectangle-32"></div>
+              </div>
+              <div class="frame-35">
+                <div class="rectangle-33"></div>
+                <div class="rectangle-34"></div>
+              </div>
+              <div class="frame-9">
+                <div class="rectangle-33"></div>
+                <div class="rectangle-34"></div>
+              </div>
+              <div class="frame-11">
+                <div class="rectangle-35"></div>
+                <div class="rectangle-36"></div>
+              </div>
+              <div class="frame-36">
+                <div class="rectangle-31"></div>
+                <div class="rectangle-32"></div>
+              </div>
+              <div class="frame-14">
+                <div class="rectangle-31"></div>
+                <div class="rectangle-32"></div>
+              </div>
+              <div class="frame-37">
+                <div class="rectangle-33"></div>
+                <div class="rectangle-34"></div>
+              </div>
+              <img class="vector" src="../static/img/vector-4.svg" />
+              <img class="vector-2" src="../static/img/vector-4.svg" />
+              <div class="text-wrapper-9">LIGHTS</div>
+            </div>
+            <div class="frame-23">
+              <div class="rectangle-33"></div>
+              <div class="rectangle-34"></div>
+            </div>
+            <div class="frame-25">
+              <div class="rectangle-35"></div>
+              <div class="rectangle-36"></div>
+            </div>
+            <div class="frame-38">
+              <div class="rectangle-33"></div>
+              <div class="rectangle-34"></div>
+            </div>
+            <div class="rectangle-37"></div>
+            <div class="frame-39">
+              <div class="rectangle-34"></div>
+              <div class="rectangle-33"></div>
+            </div>
+            <img class="vector-3" src="../static/img/vector-5.svg" />
+          </div>
+          <img class="rectangle-38" src="../static/img/rectangle-117-1.svg" />
+        </div>
+        <div class="button-small-2">
+          <div class="overlap-6">
+            <div class="overlap-group-7">
+              <div class="rectangle-30"></div>
+              <div class="frame-34">
+                <div class="rectangle-31"></div>
+                <div class="rectangle-32"></div>
+              </div>
+              <div class="frame-35">
+                <div class="rectangle-33"></div>
+                <div class="rectangle-34"></div>
+              </div>
+              <div class="frame-9">
+                <div class="rectangle-33"></div>
+                <div class="rectangle-34"></div>
+              </div>
+              <div class="frame-11">
+                <div class="rectangle-35"></div>
+                <div class="rectangle-36"></div>
+              </div>
+              <div class="frame-36">
+                <div class="rectangle-31"></div>
+                <div class="rectangle-32"></div>
+              </div>
+              <div class="frame-14">
+                <div class="rectangle-31"></div>
+                <div class="rectangle-32"></div>
+              </div>
+              <div class="frame-37">
+                <div class="rectangle-33"></div>
+                <div class="rectangle-34"></div>
+              </div>
+              <img class="vector" src="../static/img/vector-4.svg" />
+              <img class="vector-2" src="../static/img/vector-4.svg" />
+              <div class="text-wrapper-9">CLIMATE</div>
+            </div>
+            <div class="frame-23">
+              <div class="rectangle-33"></div>
+              <div class="rectangle-34"></div>
+            </div>
+            <div class="frame-25">
+              <div class="rectangle-35"></div>
+              <div class="rectangle-36"></div>
+            </div>
+            <div class="frame-38">
+              <div class="rectangle-33"></div>
+              <div class="rectangle-34"></div>
+            </div>
+            <div class="rectangle-37"></div>
+            <div class="frame-39">
+              <div class="rectangle-34"></div>
+              <div class="rectangle-33"></div>
+            </div>
+            <img class="vector-3" src="../static/img/vector-5.svg" />
+          </div>
+          <img class="rectangle-38" src="../static/img/rectangle-117-1.svg" />
+        </div>
+        <div class="button-small-3">
+          <div class="overlap-6">
+            <div class="overlap-group-7">
+              <div class="rectangle-30"></div>
+              <div class="frame-34">
+                <div class="rectangle-31"></div>
+                <div class="rectangle-32"></div>
+              </div>
+              <div class="frame-35">
+                <div class="rectangle-33"></div>
+                <div class="rectangle-34"></div>
+              </div>
+              <div class="frame-9">
+                <div class="rectangle-33"></div>
+                <div class="rectangle-34"></div>
+              </div>
+              <div class="frame-11">
+                <div class="rectangle-35"></div>
+                <div class="rectangle-36"></div>
+              </div>
+              <div class="frame-36">
+                <div class="rectangle-31"></div>
+                <div class="rectangle-32"></div>
+              </div>
+              <div class="frame-14">
+                <div class="rectangle-31"></div>
+                <div class="rectangle-32"></div>
+              </div>
+              <div class="frame-37">
+                <div class="rectangle-33"></div>
+                <div class="rectangle-34"></div>
+              </div>
+              <img class="vector" src="../static/img/vector-4.svg" />
+              <img class="vector-2" src="../static/img/vector-4.svg" />
+              <a class="text-wrapper-9" href="/">MISC</a>
+            </div>
+            <div class="frame-23">
+              <div class="rectangle-33"></div>
+              <div class="rectangle-34"></div>
+            </div>
+            <div class="frame-25">
+              <div class="rectangle-35"></div>
+              <div class="rectangle-36"></div>
+            </div>
+            <div class="frame-38">
+              <div class="rectangle-33"></div>
+              <div class="rectangle-34"></div>
+            </div>
+            <div class="rectangle-37"></div>
+            <div class="frame-39">
+              <div class="rectangle-34"></div>
+              <div class="rectangle-33"></div>
+            </div>
+            <img class="vector-3" src="../static/img/vector-5.svg" />
+          </div>
+          <img class="rectangle-38" src="../static/img/rectangle-117-1.svg" />
+        </div>
+        <div class="button-small-4">
+          <div class="overlap-7">
+            <div class="overlap-group-7">
+              <div class="rectangle-30"></div>
+              <div class="frame-34">
+                <div class="rectangle-31"></div>
+                <div class="rectangle-32"></div>
+              </div>
+              <div class="frame-35">
+                <div class="rectangle-33"></div>
+                <div class="rectangle-34"></div>
+              </div>
+              <div class="frame-9">
+                <div class="rectangle-33"></div>
+                <div class="rectangle-34"></div>
+              </div>
+              <div class="frame-11">
+                <div class="rectangle-35"></div>
+                <div class="rectangle-36"></div>
+              </div>
+              <div class="frame-36">
+                <div class="rectangle-31"></div>
+                <div class="rectangle-32"></div>
+              </div>
+              <div class="frame-14">
+                <div class="rectangle-31"></div>
+                <div class="rectangle-32"></div>
+              </div>
+              <div class="frame-37">
+                <div class="rectangle-33"></div>
+                <div class="rectangle-34"></div>
+              </div>
+              <img class="vector" src="../static/img/vector-4.svg" />
+              <img class="vector-2" src="../static/img/vector-4.svg" />
+              <a class="text-wrapper-9" href="/first">OVERVIEW</a>
+            </div>
+            <div class="frame-23">
+              <div class="rectangle-33"></div>
+              <div class="rectangle-34"></div>
+            </div>
+            <div class="frame-25">
+              <div class="rectangle-35"></div>
+              <div class="rectangle-36"></div>
+            </div>
+            <div class="frame-38">
+              <div class="rectangle-33"></div>
+              <div class="rectangle-34"></div>
+            </div>
+            <div class="rectangle-37"></div>
+            <div class="frame-39">
+              <div class="rectangle-34"></div>
+              <div class="rectangle-33"></div>
+            </div>
+            <img class="vector-3" src="../static/img/vector-5.svg" />
+          </div>
+          <img class="rectangle-38" src="../static/img/rectangle-117-1.svg" />
+        </div>
+      </div>
     </div>
+  <script>
 
-    <div class="rectangle-wrapper">
-        <div class="rectangle-7">
-            <div class="progress-bar"></div>
-        </div>
-    </div>
-
-    <div class="data-container" style="display: flex; justify-content: space-around; width: 100%;">
-        <div class="chart-container" style="flex: 1; height:40vh; max-width: 49%;">
-            <canvas id="hourlyPriceChart"></canvas>
-        </div>
-        <div class="bus-container" style="flex: 1; height:40vh; max-width: 49%; overflow-y: auto;">
-            <h1> Next buses towards city center</h1>
-            <!-- Dynamic bus data will be inserted here -->
-        </div>
-
-        <a href= "/testIndex" class="btn">Test</a>
-        <a href="/first" class="btn"> Actual </a>
+      let config = {{ config | tojson }};
 
 
-    </div>
-    <button id="fetch-airthings-data" class="btn">Fetch Airthings Data</button>
-    <div id="airthings-data-container"></div>
+      function updateProgressBar() {
+          const now = new Date();
+          const hours = now.getHours();
+          const minutes = now.getMinutes();
+          const seconds = now.getSeconds();
+          const totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
+          const percentage = (totalSeconds / 86400) * 100; // 86400 seconds in a day
 
-    <div style="padding: 10px"> </div>
+          const progressBar = document.querySelector('.rectangle-9');
+          progressBar.style.width = percentage + '%';
+      }
 
-    <div id="ruuvitag-data-container"></div>
-
-
-    <div style="padding: 10px"> </div>
-
-
-    <a href="/settings" class="btn">Settings</a>
-</div>
-<div id="colors">
-    <div id="red" class="color"></div>
-    <div id="green" class="color"></div>
-    <div id="blue" class="color"></div>
-    <div id="yellow" class="color"></div>
-    <div id="orange" class="color"></div>
-    <div id="purple" class="color"></div>
-</div>
-<script>
-    let config = {{ config | tojson }};
+      function updateClock() {
+          const now = new Date();
+          const hours = now.getHours().toString().padStart(2, '0');
+          const minutes = now.getMinutes().toString().padStart(2, '0');
+          document.getElementById('clock').textContent = `${hours}:${minutes}`;
+      }
 
 
+      function drawFillerSquare() {
+          const canvas = document.getElementById('hourlyPriceChart');
+          const ctx = canvas.getContext('2d');
+          ctx.fillStyle = 'rgba(200, 200, 200, 0.5)'; // Light gray color
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
 
-    function updateClock() {
-        const now = new Date();
-        const hours = now.getHours().toString().padStart(2, '0');
-        const minutes = now.getMinutes().toString().padStart(2, '0');
-        document.getElementById('clock').textContent = `${hours}:${minutes}`;
-    }
+      async function fetchAirthingsData() {
+          try {
+              const response = await fetch("https://ext-api.airthings.com/v1/devices/"+config.airthingsDeviceId+"/latest-samples?accountId="+config.airthingsUID, {
+                  method: 'GET',
+                  headers:
+                      {
+                          "Authorization":config.airthingsAuthToken,
+                          "Accept":"application/json"
+                      }
+              });
+              const data = await response.json();
+              displayAirthingsData(data);
 
-    setInterval(updateClock, 1000);
-    updateClock(); // Initialize the clock immediately on page load
+          }
+          catch (error) {
+              console.error('Failed to fetch Airthings data:', error);
+          }
+      }
 
+      function displayAirthingsData(data) {
 
-    async function fetchAirthingsData() {
-        try {
-            const response = await fetch("https://ext-api.airthings.com/v1/devices/"+config.airthingsDeviceId+"/latest-samples?accountId="+config.airthingsUID, {
-                method: 'GET',
-                headers:
-                    {
-                    "Authorization":config.airthingsAuthToken,
-                    "Accept":"application/json"
-                }
-            });
-            const data = await response.json();
-            displayAirthingsData(data);
-            console.log(data)
-        }
-        catch (error) {
-           // if (error.response.status == 401) {
-             //   window.location.reload();}   //reload page to refresh token
-        //    else  {
-            console.error('Failed to fetch Airthings data:', error);}
+          const radonContainer = document.getElementById('radon_value');
+          const airtempCont= document.getElementById('airsupllyTemp');
+          const vocCont= document.getElementById('voc_value');
+          const co2Cont= document.getElementById("co2_value");
 
-    }
+          radonContainer.innerHTML=''
+          if (data.data.radonShortTermAvg > 20) {
+              radonContainer.style.color = 'rgba(247, 80, 73, 1)';
+          } else {
+              radonContainer.style.color = 'rgba(255, 187, 0, 1)';
+          }
 
-    function displayAirthingsData(data) {
-        const container = document.getElementById('airthings-data-container');
-        container.innerHTML = ''; // Clear previous data
-        const deviceElem = document.createElement('div');
-            deviceElem.classList.add('airthings-device');
-            deviceElem.innerHTML = `
-                <p><strong>Temperature:</strong> ${data.data.temp} °C</p>
-                <p><strong>Humidity:</strong> ${data.data.humidity} %</p>
-                <p><strong>CO2:</strong> ${data.data.co2} ppm</p>
-                <p><strong>Radon:</strong> ${data.data.radonShortTermAvg} Bq/m³</p>
-                <p><strong>VOC:</strong> ${data.data.voc}</p>
-            `;
-            container.appendChild(deviceElem);
-
-    }
-
-    document.getElementById('fetch-airthings-data').addEventListener('click', fetchAirthingsData);
+          if (data.data.voc >2000 ){
+              vocCont.style.color = 'rgba(247, 80, 73, 1)';
+          } else {
+              vocCont.style.color = 'rgba(0, 255, 230, 1)';
+          }
 
 
-    async function fetchRuuviTagData() {
-        try {
-            const response = await fetch('/ruuvitag_data');
-            const data = await response.json();
-            displayRuuviTagData(data);
-        } catch (error) {
-            console.error('Failed to fetch RuuviTag data:', error);
-        }
-    }
-
-    function displayRuuviTagData(data) {
-        const container = document.getElementById('ruuvitag-data-container');
-        container.innerHTML = ''; // Clear previous data
-        const tagElem = document.createElement('div');
-        tagElem.classList.add('ruuvi-tag');
-        tagElem.innerHTML = `
-                <p><strong>Temperature in fridge:</strong> ${data["D9:9C:2D:02:42:29"]} °C</p>
-                <p><strong>Temperature outside:</strong> ${data["CE:6C:D7:43:EB:29"]} °C</p>
-                <p><strong>Temperature inside:</strong> ${data["EB:24:02:73:82:FB"]} °C</p>
-
-            `;
-            container.appendChild(tagElem);
-        }
+          co2Cont.innerHTML= data.data.co2+" ppm";
+          radonContainer.innerHTML = data.data.radonShortTermAvg+" Bq/m³";
+          airtempCont.innerHTML="+"+data.data.temp;
+          vocCont.innerHTML= data.data.voc +" ppb";
 
 
-    setInterval(fetchRuuviTagData, 300000); // Fetch data every 5 minutes
-    fetchRuuviTagData(); // Initial fetch on page load
-
-    async function getPriceForHourToday(hour){
-        const PRICE_ENDPOINT = 'https://api.porssisahko.net/v1/price.json';
-        const dateAndTimeNow = new Date();
-        const year = dateAndTimeNow.getFullYear();
-        const month = dateAndTimeNow.getMonth() + 1;
-        const day = dateAndTimeNow.getDate();
-
-        const twoDigits = (number) => (number < 10 ? `0${number}` : `${number}`);
-
-        const params = `date=${year}-${twoDigits(month)}-${twoDigits(day)}&hour=${twoDigits(hour)}`;
-        const response = await fetch(`${PRICE_ENDPOINT}?${params}`);
-        const { price } = await response.json();
-        console.log(`The price is now ${price}`);
-        return price;}
-    //requires anti cors measures on localhost
+      }
 
 
+      async function fetchRuuviTagData() {
+          try {
+              vdata={
+                  [config["macs"][0]]:"...",
+                  [config["macs"][1]]:"...",
+                  [config['macs'][2]]:"..."}
 
+              displayRuuviTagData(vdata);
+              const response = await fetch('/ruuvitag_data');
+              const data = await response.json();
+              displayRuuviTagData(data);
+          } catch (error) {
+              console.error('Failed to fetch RuuviTag data:', error);
+          }
+      }
 
+      function displayRuuviTagData(data) {
+          const fridgeTemp = document.getElementById('fridgeTemp')
+          fridgeTemp.innerHTML = Number("+"+data[config["macs"][1]]).toFixed(1);
 
+          const outsideTemp = document.getElementById("outsideTemp");
+          outsideTemp.innerHTML = Number("+"+data[config["macs"][0]]).toFixed(1);
 
+          const insideTemp = document.getElementById("insideTemp");
+            insideTemp.innerHTML = Number("+"+data[config["macs"][2]]).toFixed(1);
+      }
 
-    window.onload = function() {
+      function updateBusContainer(itineraries) {
+          itineraries.forEach((itinerary, index) => {
+              itinerary.legs.forEach(leg => {
+                  if (leg.trip!=null) {
+                      itineraryHtml=""
+                      const startTime =  new Date(itinerary.startTime).toLocaleTimeString().split(".");
+                      const busLeavesTime = new Date(leg.startTime).toLocaleTimeString().split(".");
+                      const busArrivesTime = new Date(leg.endTime).toLocaleTimeString().split(".");
+                      alert
+                      itineraryHtml += `
+                        ${startTime[0]}:${startTime[1]} - LINE ${leg.trip.routeShortName}<br />FROM STOP AT ${busLeavesTime[0]}:${busLeavesTime[1]}<br />ARRIVE ${busArrivesTime[0]}:${busArrivesTime[1]}`;
+                  };
+              });
+              cont= document.getElementById(`bus_${index}`);
+              cont.innerHTML = itineraryHtml;
 
-        function updateProgressBar() {
-            const now = new Date();
-            const hours = now.getHours();
-            const minutes = now.getMinutes();
-            const seconds = now.getSeconds();
-            const totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
-            const percentage = (totalSeconds / 86400) * 100; // 86400 seconds in a day
-
-            const progressBar = document.querySelector('.progress-bar');
-            progressBar.style.width = percentage + '%';
-        }
-
-        setInterval(updateProgressBar, 1000);
-        updateProgressBar();
-
-        async function fetchAndDisplayElectricityPrices() {
-            const URL = 'https://api.porssisahko.net/v1/latest-prices.json';
-
-            try {
-                const response = await fetch(URL);
-                const jsonData = await response.json();
-                const pricesData = jsonData.prices;
-
-                // Get the current date and time
-                const now = new Date();
-
-                // Filter the pricesData array to include only future prices
-                const futurePricesData = pricesData.filter(data => new Date(data.startDate) > now);
-
-                // Sort the future prices data based on startDate
-                futurePricesData.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
-
-                // Extract prices and hours for labels
-                const prices = futurePricesData.map(data => data.price);
-                const hours = futurePricesData.map(data => new Date(data.startDate).getHours() + ':00');
-
-                // Update the chart
-                updateElectricityPriceChart(hours, prices);
-            } catch (error) {
-                console.error('Failed to fetch electricity prices:', error);
-            }
-        }
-
-        function updateElectricityPriceChart(labels, data) {
-            const ctx = document.getElementById('hourlyPriceChart').getContext('2d');
-            const backgroundColors = labels.map((label) => {
-                if (label === "0:00") {
-                    return 'rgba(255, 99, 132, 0.6)'; // Highlight the current hour
-                }  else {
-                    return 'rgba(75,192,192,0.6)'; // Past hours
-                }
-            });
-
-            const chartExists = Chart.getChart('hourlyPriceChart'); // Check if the chart instance exists
-            if (chartExists) {
-                chartExists.data.labels = labels;
-                chartExists.data.datasets[0].data = data;
-                chartExists.data.datasets[0].backgroundColor = backgroundColors; // Update background colors
-                chartExists.update();
-            } else {
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: 'Electricity Price (cents/kWh)',
-                            data: data,
-                            fill: false,
-                            borderColor: 'rgb(75, 192, 192)',
-                            backgroundColor: backgroundColors,
-                            tension: 0.1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-            }
-        }
-
-        // Call the function to fetch the data and display the chart
-        fetchAndDisplayElectricityPrices();
-
-
-        const drawings = {{ drawings | tojson }};
-        const canvas1 = document.getElementById('gridCanvas1');
-        const context1 = canvas1.getContext('2d');
-        const canvas2 = document.getElementById('gridCanvas2');
-        const context2 = canvas2.getContext('2d');
-        const selectedTemplate1 = '{{ selected_templates[0] if selected_templates|length > 0 else "" }}';
-        const selectedTemplate2 = '{{ selected_templates[1] if selected_templates|length > 1 else "" }}';
-        const templateName1 = document.getElementById('templateName1');
-        const templateName2 = document.getElementById('templateName2');
-
-        function drawGrid(context, width, height, gridSize = 20) {
-            context.strokeStyle = '#ddd';
-            for (let x = 0; x <= width; x += gridSize) {
-                context.moveTo(x, 0);
-                context.lineTo(x, height);
-            }
-            for (let y = 0; y <= height; y += gridSize) {
-                context.moveTo(0, y);
-                context.lineTo(width, y);
-            }
-            context.stroke();
-        }
-
-        function addRectangleClickListener(canvas, rectangles) {
-            canvas.addEventListener('click', function(event) {
-                const x = event.offsetX;
-                const y = event.offsetY;
-                rectangles.forEach(rect => {
-                    if (x >= rect.startX && x <= rect.startX + rect.width && y >= rect.startY && y <= rect.startY + rect.height) {
-                        fetch('/api_request/' +rect.color, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ color: rect.color })
-                        })
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.status === 'success') {
-                                    alert('API request sent successfully!');
-                                } else {
-                                    alert('Failed to send API request.');
-                                }
-                            });
-                    }
-                });
-            });
-        }
-
-        if (selectedTemplate1) {
-            const drawing1 = drawings.find(drawing => drawing.name === selectedTemplate1);
-            if (drawing1) {
-                templateName1.textContent = drawing1.name;
-                initializeCanvas(canvas1, context1, drawing1.rectangles);
-                addRectangleClickListener(canvas1, drawing1.rectangles);  // Add this line
-            }
-        }
-
-        if (selectedTemplate2) {
-            const drawing2 = drawings.find(drawing => drawing.name === selectedTemplate2);
-            if (drawing2) {
-                templateName2.textContent = drawing2.name;
-                initializeCanvas(canvas2, context2, drawing2.rectangles);
-                addRectangleClickListener(canvas2, drawing2.rectangles);  // Add this line
-            }
-        }
-        function drawRectangles(context, rectangles) {
-            rectangles.forEach(rect => {
-                context.fillStyle = rect.color;
-                context.fillRect(rect.startX, rect.startY, rect.width, rect.height);
-            });
-        }
-
-        function initializeCanvas(canvas, context, rectangles) {
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            drawGrid(context, canvas.width, canvas.height);
-            drawRectangles(context, rectangles);
-        }
-
-        if (selectedTemplate1) {
-            const drawing1 = drawings.find(drawing => drawing.name === selectedTemplate1);
-            if (drawing1) {
-                templateName1.textContent = drawing1.name;
-                initializeCanvas(canvas1, context1, drawing1.rectangles);
-            }
-        }
-
-        if (selectedTemplate2) {
-            const drawing2 = drawings.find(drawing => drawing.name === selectedTemplate2);
-            if (drawing2) {
-                templateName2.textContent = drawing2.name;
-                initializeCanvas(canvas2, context2, drawing2.rectangles);
-            }
-        }
-
-        function updateBusContainer(itineraries) {
-            const container = document.querySelector('.bus-container');
-            container.innerHTML = '<h2>Next buses towards city center</h2>'; // Reset container content
-
-            itineraries.forEach((itinerary, index) => {
-                const itineraryElem = document.createElement('div');
-                itineraryElem.classList.add('itinerary');
-
-                let itineraryHtml = ``;
-                itinerary.legs.forEach(leg => {
-                    if (leg.trip!=null) {
-                    const startTime =  new Date(itinerary.startTime).toLocaleTimeString().split(".");
-                    const busLeavesTime = new Date(leg.startTime).toLocaleTimeString().split(".");
-                    itineraryHtml += `
-                <li>
-                    <strong>${leg.trip.routeShortName}</strong>
-                    <br> From home: <strong>${startTime[0]}:${startTime[1]}</strong>
-                    <br> Bus leaves at ${busLeavesTime[0]}:${busLeavesTime[1]} from ${leg.from.name}
-                </li>
-                <br>`;
-                };
-                 });
-                itineraryHtml += '</ul>';
-                itineraryElem.innerHTML = itineraryHtml;
-                container.appendChild(itineraryElem);
-            });
-                }
-        async function fetchBusItineraries() {
-                    const query = `
+          });
+      }
+      async function fetchBusItineraries() {
+          const query = `
                 {
               plan(
                 from: {lat: ${config.coordinates.from.lat}, lon: ${config.coordinates.from.lon}}
@@ -488,6 +2709,7 @@
                       routeShortName
                     }
                     startTime
+                    endTime
                     from {
                       name
                     }
@@ -496,46 +2718,181 @@
               }
             }`;
 
-            try {
-                const response = await fetch('https://api.digitransit.fi/routing/v1/routers/finland/index/graphql', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'digitransit-subscription-key':config.digitransitApiKey
-                    },
-                    body: JSON.stringify({ query })
-                });
-                const { data } = await response.json();
+          try {
+              const response = await fetch('https://api.digitransit.fi/routing/v1/routers/finland/index/graphql', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'digitransit-subscription-key':config.digitransitApiKey
+                  },
+                  body: JSON.stringify({ query })
+              });
+              const { data } = await response.json();
 
-                updateBusContainer(data.plan.itineraries);
+              updateBusContainer(data.plan.itineraries);
 
-                // Find the earliest startTime among the first legs of the itineraries
-                const earliestStartTime = data.plan.itineraries
-                    .map(itinerary => new Date(itinerary.legs[0].startTime).getTime())
-                    .sort()[0];
+              // Find the earliest startTime among the first legs of the itineraries
+              const earliestStartTime = data.plan.itineraries
+                  .map(itinerary => new Date(itinerary.legs[0].startTime).getTime())
+                  .sort()[0];
 
-                // Calculate the delay until the earliest startTime
-                const now = new Date().getTime();
-                const delay = earliestStartTime - now;
+              // Calculate the delay until the earliest startTime
+              const now = new Date().getTime();
+              const delay = earliestStartTime - now;
 
-                // Set a timeout to fetch the next bus itineraries
-                if (delay > 0) {
-                    setTimeout(fetchBusItineraries, delay);
-                }
-            } catch (error) {
-                alert(error)
-                console.error('Failed to fetch bus itineraries:', error);
-            }
-        }
+              // Set a timeout to fetch the next bus itineraries
+              if (delay > 0) {
+                  setTimeout(fetchBusItineraries, delay);
+              }
+          } catch (error) {
+              alert(error)
+              console.error('Failed to fetch bus itineraries:', error);
+          }
+      }
 
 
 
-        // Call the function to fetch and display bus itineraries
-        fetchBusItineraries();
+      async function fetchAndDisplayElectricityPrices() {
+          const URL = 'https://api.porssisahko.net/v1/latest-prices.json';
 
-        drawGrid(context1, canvas1.width, canvas1.height);
-        drawGrid(context2, canvas2.width, canvas2.height);
-    };
-</script>
-</body>
+          try {
+              const response = await fetch(URL);
+              const jsonData = await response.json();
+              const pricesData = jsonData.prices;
+
+              // Get the current date and time
+              const now = new Date();
+
+              // Filter the pricesData array to include only future prices
+              const futurePricesData = pricesData.filter(data => new Date(data.startDate) > now);
+
+              // Sort the future prices data based on startDate
+              futurePricesData.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+
+              // Extract prices and hours for labels
+              const prices = futurePricesData.map(data => data.price);
+              const hours = futurePricesData.map(data => new Date(data.startDate).getHours() + ':00');
+
+              // Update the chart
+              updateElectricityPriceChart(hours, prices);
+          } catch (error) {
+              console.error('Failed to fetch electricity prices:', error);
+          }
+      }
+
+      function updateElectricityPriceChart(labels, data) {
+          const ctx = document.getElementById('hourlyPriceChart').getContext('2d');
+          const backgroundColors = labels.map((label) => {
+              if (label === "0:00") {
+                  return 'rgba(255, 99, 132, 0.6)'; // Highlight the current hour
+              }  else {
+                  return 'rgba(75,192,192,0.6)'; // Past hours
+              }
+          });
+
+          const chartExists = Chart.getChart('hourlyPriceChart'); // Check if the chart instance exists
+          if (chartExists) {
+              chartExists.data.labels = labels;
+              chartExists.data.datasets[0].data = data;
+              chartExists.data.datasets[0].backgroundColor = backgroundColors; // Update background colors
+              chartExists.update();
+          } else {
+              new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                      labels: labels,
+                      datasets: [{
+                          label: 'Electricity Price (cents/kWh)',
+                          data: data,
+                          fill: false,
+                          borderColor: 'rgb(75, 192, 192)',
+                          backgroundColor: backgroundColors,
+                          tension: 0.1
+                      }]
+                  },
+                  options: {
+                      plugins:{
+                            legend: {
+                                display: false},
+                      scales: {
+                          y: {
+                              beginAtZero: true
+                          }
+                      }
+                  }
+              }});
+          }
+      }
+
+
+
+
+      window.onload = function() {
+          drawFillerSquare()
+          fetchAirthingsData();
+          updateClock(); // Initialize the clock immediately on page load
+
+          updateProgressBar();
+
+          fetchRuuviTagData(); // Initial fetch on page load
+          fetchBusItineraries()
+          fetchAndDisplayElectricityPrices();
+
+
+          setInterval(updateProgressBar, 60000);   // update clock and progress bar every minute
+          setInterval(updateClock, 60000);
+          setInterval(fetchRuuviTagData, 300000); // Fetch data every 5 minutes
+
+
+          document.getElementById('livingroom_on').addEventListener('click', async () => {
+              const url = config['livingroomOn'];
+              const body = {
+                  "on": {
+                      "on": true
+                  }
+              };
+              const headers = {
+                  'Content-Type': 'application/json',
+                  'hue-application-key': config['hueApiKey'] // Replace with your actual key
+              };
+
+              try {
+                  const response = await fetch(url, {
+                      method: 'PUT',
+                      headers: headers,
+                      body: JSON.stringify(body)
+                  });
+
+                  if (!response.ok) {
+                      throw new Error('Network response was not ok');
+                  }
+
+                  const data = await response.json();
+                  console.log('Success:', data);
+              } catch (error) {
+                  console.error('Error:', error);
+              }
+
+
+              document.getElementById('livingroom_off').addEventListener('click', () => {
+                  const response = fetch(config.livingroomOff, {
+                      method: 'PUT',
+                      headers: {
+                          'Content-Type': 'application/json',
+                          'hue-application-key': config["hueApiKey"]
+                      },
+                      body: JSON.stringify({
+                          "on": {
+                              "on": "false"
+                          }
+                      })
+                  });
+
+              });
+
+          }    )
+      }
+
+  </script>
+  </body>
 </html>
