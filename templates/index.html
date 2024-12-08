@@ -1316,7 +1316,7 @@
                 <div class="overlap-group-4">
                   <div class="overlap-group-5">
                     <div class="rectangle-19"></div>
-                    <a class="LIVINGROOM-OFF" id="livingroom_off" href="/livingroomOff">LIVINGROOM<br />OFF</a>
+                    <a class="LIVINGROOM-OFF" id="livingroom_off">LIVINGROOM<br />OFF</a>
                     <div class="frame-5">
                       <div class="rectangle-3"></div>
                       <div class="rectangle-4"></div>
@@ -1440,7 +1440,7 @@
                 <div class="overlap-group-4">
                   <div class="overlap-group-5">
                     <div class="rectangle-19"></div>
-                    <a class="LIVINGROOM-OFF" id="livingroom_on" href="/livingroomOn">LIVINGROOM<br />DAY</a>
+                    <a class="LIVINGROOM-OFF" id="livingroom_on">LIVINGROOM<br />DAY</a>
                     <div class="frame-5">
                       <div class="rectangle-3"></div>
                       <div class="rectangle-4"></div>
@@ -1566,7 +1566,7 @@
                 <div class="overlap-group-4">
                   <div class="overlap-group-5">
                     <div class="rectangle-19"></div>
-                    <div class="LIVINGROOM-OFF">LIVINGROOM<br />EVENING</div>
+                    <a class="LIVINGROOM-OFF" id="livingroom_evening">LIVINGROOM<br />EVENING</a>
                     <div class="frame-5">
                       <div class="rectangle-3"></div>
                       <div class="rectangle-4"></div>
@@ -2542,7 +2542,7 @@
               </div>
               <img class="vector" src="../static/img/vector-4.svg" />
               <img class="vector-2" src="../static/img/vector-4.svg" />
-              <a class="text-wrapper-9" href="/first">OVERVIEW</a>
+              <a class="text-wrapper-9" href="/">OVERVIEW</a>
             </div>
             <div class="frame-23">
               <div class="rectangle-33"></div>
@@ -2625,24 +2625,32 @@
           const vocCont= document.getElementById('voc_value');
           const co2Cont= document.getElementById("co2_value");
 
-          radonContainer.innerHTML=''
-          if (data.data.radonShortTermAvg > 20) {
-              radonContainer.style.color = 'rgba(247, 80, 73, 1)';
-          } else {
-              radonContainer.style.color = 'rgba(255, 187, 0, 1)';
+
+          if (data.data.co2 >800) {
+                co2Cont.style.color = 'rgba(247, 80, 73, 1)';
+            } else {
+                co2Cont.style.color = 'rgb(0,255,229)';
           }
 
-          if (data.data.voc >2000 ){
+          if (data.data.radonShortTermAvg > 150) {
+              radonContainer.style.color = 'rgba(247, 80, 73, 1)';
+          } else {
+              radonContainer.style.color = 'rgb(0,255,229)';
+          }
+
+          if (data.data.voc >220 ){
               vocCont.style.color = 'rgba(247, 80, 73, 1)';
           } else {
-              vocCont.style.color = 'rgba(0, 255, 230, 1)';
+              vocCont.style.color = 'rgb(0,255,229)';
           }
+
 
 
           co2Cont.innerHTML= data.data.co2+" ppm";
           radonContainer.innerHTML = data.data.radonShortTermAvg+" Bq/m³";
-          airtempCont.innerHTML="+"+data.data.temp;
+          //airtempCont.innerHTML=data.data.temp;
           vocCont.innerHTML= data.data.voc +" ppb";
+
 
 
       }
@@ -2666,27 +2674,35 @@
 
       function displayRuuviTagData(data) {
           const fridgeTemp = document.getElementById('fridgeTemp')
-          fridgeTemp.innerHTML = Number("+"+data[config["macs"][1]]).toFixed(1);
+          fridgeTemp.innerHTML = Number(data[config["macs"][1]]).toFixed(1);
 
           const outsideTemp = document.getElementById("outsideTemp");
-          outsideTemp.innerHTML = Number("+"+data[config["macs"][0]]).toFixed(1);
+          outsideTemp.innerHTML = Number(data[config["macs"][0]]).toFixed(1);
 
-          const insideTemp = document.getElementById("insideTemp");
-            insideTemp.innerHTML = Number("+"+data[config["macs"][2]]).toFixed(1);
+          const insideTemp=document.getElementById("insideTemp");
+            insideTemp.innerHTML = Number(data[config["macs"][3]]).toFixed(1);
+
+          const inflowTemp = document.getElementById("airsupllyTemp");
+            inflowTemp.innerHTML = Number(data[config["macs"][2]]).toFixed(1);
       }
 
       function updateBusContainer(itineraries) {
           itineraries.forEach((itinerary, index) => {
               itinerary.legs.forEach(leg => {
-                  if (leg.trip!=null) {
+                  if (leg.trip!=null) {           //If causes startTime[1] to be undefined switch to "."
                       itineraryHtml=""
                       const startTime =  new Date(itinerary.startTime).toLocaleTimeString().split(".");
                       const busLeavesTime = new Date(leg.startTime).toLocaleTimeString().split(".");
                       const busArrivesTime = new Date(leg.endTime).toLocaleTimeString().split(".");
                       alert
-                      itineraryHtml += `
-                        ${startTime[0]}:${startTime[1]} - LINE ${leg.trip.routeShortName}<br />FROM STOP AT ${busLeavesTime[0]}:${busLeavesTime[1]}<br />ARRIVE ${busArrivesTime[0]}:${busArrivesTime[1]}`;
-                  };
+                      if (startTime[1] === undefined) {
+                          itineraryHtml += `
+                          ${startTime[0].substring(0,5)} - LINE ${leg.trip.routeShortName}<br />FROM STOP AT ${busLeavesTime[0].substring(0,5)}<br />ARRIVE ${busArrivesTime[0].substring(0,5)
+                          }`;
+                      } else {
+                          itineraryHtml += `
+                            ${startTime[0]}:${startTime[1]} - LINE ${leg.trip.routeShortName}<br />FROM STOP AT ${busLeavesTime[0]}:${busLeavesTime[1]}<br />ARRIVE ${busArrivesTime[0]}:${busArrivesTime[1]}`;
+                      }};
               });
               cont= document.getElementById(`bus_${index}`);
               cont.innerHTML = itineraryHtml;
@@ -2750,30 +2766,32 @@
           }
       }
 
-
-
+      // displays electricity prices for the next 24 hours
       async function fetchAndDisplayElectricityPrices() {
-          const URL = 'https://api.porssisahko.net/v1/latest-prices.json';
-
+          const URL = '/proxy';
           try {
-              const response = await fetch(URL);
+              const response = await fetch(URL, {
+                  method: 'GET',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  // Remove mode: 'no-cors' as it prevents accessing the response
+              });
+
+              if (!response.ok) {
+                  throw new Error(`HTTP error! status: ${response.status}`);
+              }
+
               const jsonData = await response.json();
               const pricesData = jsonData.prices;
 
-              // Get the current date and time
               const now = new Date();
-
-              // Filter the pricesData array to include only future prices
-              const futurePricesData = pricesData.filter(data => new Date(data.startDate) > now);
-
-              // Sort the future prices data based on startDate
+              const futurePricesData = pricesData.filter(data => new Date(data.startDate) >= now);
               futurePricesData.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
 
-              // Extract prices and hours for labels
               const prices = futurePricesData.map(data => data.price);
               const hours = futurePricesData.map(data => new Date(data.startDate).getHours() + ':00');
 
-              // Update the chart
               updateElectricityPriceChart(hours, prices);
           } catch (error) {
               console.error('Failed to fetch electricity prices:', error);
@@ -2844,7 +2862,35 @@
           setInterval(fetchRuuviTagData, 300000); // Fetch data every 5 minutes
 
 
-        ;
+          document.getElementById("livingroom_off").addEventListener("click", function() {
+              fetch('/livingroomOff', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({kana: "offEläin" })
+              })
+          });
+
+          document.getElementById("livingroom_evening").addEventListener("click", function() {
+              fetch('/livingroomOff', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({kana: "offEläin" })
+              })
+          });
+
+          document.getElementById("livingroom_on").addEventListener("click", function() {
+              fetch('/livingroomOn', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({kana: "onEläin" })
+              })
+          });
 
       }
 

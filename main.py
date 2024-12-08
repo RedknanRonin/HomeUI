@@ -7,8 +7,10 @@ import time
 from ruuvitag_sensor.ruuvi import RuuviTagSensor
 import asyncio
 from pip._vendor import requests
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+CORS(app)
 CONFIG_FILE = 'data/config.json'
 
 
@@ -43,7 +45,7 @@ async def ruuvitagData():
     while run:
         async for found_data in RuuviTagSensor.get_data_async(macs):
             datas.update({found_data[0]: found_data[1]})
-            if len(datas.keys()) == 3:
+            if len(datas.keys()) == 4:
                 run = False
                 break
 
@@ -55,6 +57,17 @@ async def ruuvitagData():
     cached_ruuvitag_data = res
 
     return res
+
+
+def load_electricity_data():
+    if os.path.exists('data/electricity_data.json'):
+        with open('data/electricity_data.json', 'r') as file:
+            return json.load(file)
+    return None
+
+def save_electricity_data(data):
+    with open('data/electricity_data.json', 'w') as file:
+        json.dump(data, file)
 
 def schedule_ruuvitag_data():
     ruuvitagData()
@@ -151,6 +164,42 @@ def home():
 def serve_static(filename):
     return send_from_directory('static', filename)
 
+@app.route('/proxy', methods=['GET', 'OPTIONS'])
+async def proxy():
+    # Handle preflight OPTIONS request
+    if request.method == 'OPTIONS':
+        headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET',
+            'Access-Control-Allow-Headers': 'Content-Type'
+        }
+        return ('', 204, headers)
+
+    data = load_electricity_data()
+    current_time = time.time()
+    twelve_hours = 12 * 60 * 60
+
+    if data and current_time - data['timestamp'] < twelve_hours:
+        print("Using cached data")
+        return jsonify(data['prices'])
+
+    url = 'http://api.porssisahko.net/v1/latest-prices.json'
+    try:
+        print("Fetching data from", url)
+        response = requests.get(url)
+        response.raise_for_status()
+
+        prices_data = response.json()
+        data = {
+            'timestamp': current_time,
+            'prices': prices_data
+        }
+        save_electricity_data(data)
+
+        return jsonify(prices_data)
+    except requests.exceptions.RequestException as e:
+        print("Error fetching data:", e)
+        return jsonify({'error': 'Failed to fetch data', 'details': str(e)}), 500
 
 @app.route('/ruuvitag_data', methods=['GET'])
 async def get_ruuvitag_data():
@@ -158,27 +207,37 @@ async def get_ruuvitag_data():
     print(res)
     return jsonify(res)
 
-@app.route('/livingroomOn')
+@app.route('/livingroomOn', methods=['POST'])
 def livingroomOn():
-    print("kan")
+    hueAuth()
     config = load_config()
     url = config["livingroomOn"]
     headers= {"Authorization": "Bearer "+config["hueAuthToken"]}
     body = {"on":True}
     response = requests.put(url, headers=headers, json=body)
-    print(response)
-    return render_template('index.html',config=config)
+    return "kana"
 
 
-@app.route('/livingroomOff')
+@app.route('/livingroomOff', methods=['POST'])
 def livingroomOff():
+    hueAuth()
     config = load_config()
     url = config["livingroomOff"]
     headers= {"Authorization": "Bearer "+config["hueAuthToken"]}
     body = {"on":False}
     response = requests.put(url, headers=headers, json=body)
-    print(response)
-    return render_template('index.html',config=config)
+    return "kana"
+
+@app.route('/livingroomEvening', methods=['POST'])
+def livingroomEvening():
+    hueAuth()
+    config = load_config()
+    url = config["livingroomEvening"]
+    headers= {"Authorization": "Bearer "+config["hueAuthToken"]}
+    body = {"on":True}
+    response = requests.put(url, headers=headers, json=body)
+    return "kana"
+
 
 if __name__ == "__main__":
-    app.run(debug="True",host="0.0.0.0", port=5000)
+    app.run(debug=True,host="0.0.0.0", port=5000)
