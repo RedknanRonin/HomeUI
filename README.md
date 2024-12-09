@@ -1,4 +1,8 @@
+
+![image](https://github.com/user-attachments/assets/ea5b86a4-6324-4045-8793-de6635f60476)
+
 **Project Overview**
+
 
 This project is a web application that integrates various IoT devices and APIs to provide real-time data and control functionalities. 
 It is built using Flask for the backend and JavaScript for the frontend. It includes features such as fetching and displaying RuuviTag sensor data, electricity prices, and Airthings data, as well as controlling Philips Hue lights.  
