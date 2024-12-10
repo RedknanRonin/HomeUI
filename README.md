@@ -1,5 +1,6 @@
 
-![image](https://github.com/user-attachments/assets/ea5b86a4-6324-4045-8793-de6635f60476)
+![Screenshot_20241210_130958_homeUIAaApp](https://github.com/user-attachments/assets/51e656f3-9969-4b19-b01d-9e69a3c83bb6)
+
 
 **Project Overview**
 
