@@ -12,6 +12,13 @@
         android:layout_height="wrap_content"
         android:text="Open Website" />
 
+    <EditText
+            android:id="@+id/urlInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter website URL"
+            android:text="192.168.69.228:5000" />
+
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"

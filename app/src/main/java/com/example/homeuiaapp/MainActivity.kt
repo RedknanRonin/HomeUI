@@ -31,6 +31,7 @@ class MainActivity : Activity() {
 
         val openWebsiteButton: Button = findViewById(R.id.openWebsiteButton)
         val webView: WebView = findViewById(R.id.webView)
+        val urlInput: EditText = findViewById(R.id.urlInput)
 
 
         // Set up WebView
@@ -40,11 +41,12 @@ class MainActivity : Activity() {
         }
         webView.setInitialScale(100)
         webView.webViewClient = WebViewClient()
-        val websiteUrl = "http://192.168.69.185:5000"
+        val websiteUrl = urlInput.text.toString()
         webView.loadUrl(websiteUrl)
 
         webView.visibility = View.VISIBLE
         openWebsiteButton.visibility = View.GONE
+        urlInput.visibility = View.GONE
 
 
     }
